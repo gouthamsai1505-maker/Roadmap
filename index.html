@@ -1,0 +1,4542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#f6f7f9">
+    <title>PathForge — Engineering & Technology Roadmaps</title>
+    <style>
+        :root {
+            --bg: #f6f7f9;
+            --s: #fff;
+            --s2: #eef1f4;
+            --t: #202631;
+            --m: #687586;
+            --b: #dfe3e8;
+            --a: #315b82;
+            --a2: #e8eff5;
+            --r: 10px
+        }
+
+        body.dark {
+            --bg: #15191f;
+            --s: #1e242c;
+            --s2: #282f39;
+            --t: #e8edf2;
+            --m: #a5afbb;
+            --b: #373f4a;
+            --a: #91b5d7;
+            --a2: #293746
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--t);
+            font: 15px/1.55 system-ui, Segoe UI, sans-serif
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+            color: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 3px solid #79a9d2;
+            outline-offset: 2px
+        }
+
+        .shell {
+            max-width: 1240px;
+            margin: auto;
+            padding: 0 26px
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--s);
+            border-bottom: 1px solid var(--b)
+        }
+
+        .bar {
+            height: 66px;
+            display: flex;
+            align-items: center;
+            gap: 20px
+        }
+
+        .brand {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            text-decoration: none;
+            color: var(--t);
+            min-width: 210px
+        }
+
+        .mark {
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            background: var(--a);
+            color: #fff;
+            border-radius: 9px;
+            font-weight: 800
+        }
+
+        .brand small {
+            display: block;
+            color: var(--m);
+            font-size: 10px;
+            margin-top: -4px
+        }
+
+        .search {
+            position: relative;
+            flex: 1;
+            max-width: 460px
+        }
+
+        .search input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--b);
+            border-radius: 9px;
+            padding: 10px 12px 10px 36px
+        }
+
+        .glass {
+            position: absolute;
+            left: 12px;
+            top: 7px;
+            color: var(--m)
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 4px
+        }
+
+        nav button,
+        .icon,
+        .menu {
+            border: 0;
+            background: transparent;
+            padding: 9px 11px;
+            border-radius: 8px;
+            color: var(--m)
+        }
+
+        nav button:hover,
+        .icon:hover,
+        .menu:hover {
+            background: var(--s2);
+            color: var(--t)
+        }
+
+        .menu {
+            display: none
+        }
+
+        .suggest {
+            position: absolute;
+            z-index: 40;
+            top: calc(100% + 5px);
+            left: 0;
+            right: 0;
+            background: var(--s);
+            border: 1px solid var(--b);
+            border-radius: 9px;
+            box-shadow: 0 8px 25px #0002;
+            overflow: hidden
+        }
+
+        .suggest button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            border: 0;
+            background: none;
+            padding: 10px 13px
+        }
+
+        .suggest button:hover {
+            background: var(--s2)
+        }
+
+        .suggest small {
+            display: block;
+            color: var(--m)
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        main {
+            min-height: 68vh
+        }
+
+        .hero {
+            padding: 52px 0 24px
+        }
+
+        .eyebrow {
+            color: var(--a);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .1em
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 5vw, 54px);
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin: 8px 0
+        }
+
+        .hero p,
+        .desc {
+            color: var(--m)
+        }
+
+        .hero p {
+            font-size: 17px
+        }
+
+        .hero .search {
+            max-width: 680px
+        }
+
+        .hero input {
+            font-size: 16px;
+            padding: 14px 14px 14px 40px;
+            background: var(--s)
+        }
+
+        .stats {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--m);
+            font-size: 13px;
+            margin-top: 20px
+        }
+
+        .stats b {
+            color: var(--t);
+            font-size: 15px
+        }
+
+        .section {
+            padding: 24px 0
+        }
+
+        .sh {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 12px;
+            margin-bottom: 15px
+        }
+
+        .sh h2,
+        .title {
+            font-size: 23px;
+            letter-spacing: -.5px;
+            margin: 0
+        }
+
+        .sh p {
+            margin: 3px 0;
+            color: var(--m)
+        }
+
+        .link {
+            border: 0;
+            background: none;
+            color: var(--a);
+            font-weight: 650
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 13px
+        }
+
+        .field,
+        .card,
+        .panel,
+        .continue {
+            background: var(--s);
+            border: 1px solid var(--b);
+            border-radius: var(--r)
+        }
+
+        .field {
+            padding: 15px;
+            text-align: left;
+            min-height: 90px
+        }
+
+        .field:hover,
+        .card:hover {
+            border-color: var(--a)
+        }
+
+        .field strong,
+        .field small {
+            display: block
+        }
+
+        .field small {
+            color: var(--m)
+        }
+
+        .field em {
+            font-style: normal;
+            font-size: 19px
+        }
+
+        .card {
+            padding: 15px;
+            min-height: 205px;
+            display: flex;
+            flex-direction: column
+        }
+
+        .top {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .ico {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            background: var(--s2);
+            border-radius: 8px
+        }
+
+        .pill {
+            background: var(--s2);
+            border-radius: 99px;
+            padding: 3px 8px;
+            font-size: 11px;
+            color: var(--m)
+        }
+
+        .bookmark {
+            margin-left: auto;
+            border: 0;
+            background: none;
+            color: var(--a);
+            font-size: 18px
+        }
+
+        .card h3 {
+            font-size: 15px;
+            line-height: 1.3;
+            margin: 12px 0 5px
+        }
+
+        .card p {
+            font-size: 12px;
+            color: var(--m);
+            margin: 0
+        }
+
+        .meta {
+            margin-top: auto;
+            padding-top: 11px;
+            font-size: 11px;
+            color: var(--m)
+        }
+
+        .line {
+            height: 5px;
+            background: var(--s2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 9px 0
+        }
+
+        .line i {
+            display: block;
+            height: 100%;
+            background: var(--a)
+        }
+
+        .actions {
+            display: flex;
+            gap: 7px;
+            align-items: center;
+            margin-top: 10px
+        }
+
+        .btn {
+            background: var(--s);
+            border: 1px solid var(--b);
+            border-radius: 8px;
+            padding: 8px 11px;
+            font-size: 12px;
+            font-weight: 650
+        }
+
+        .btn.primary {
+            background: var(--a);
+            border-color: var(--a);
+            color: #fff
+        }
+
+        .btn:hover {
+            border-color: var(--a)
+        }
+
+        .chips {
+            display: flex;
+            gap: 7px;
+            overflow: auto;
+            margin: 15px 0
+        }
+
+        .chip {
+            border: 1px solid var(--b);
+            background: var(--s);
+            border-radius: 99px;
+            padding: 7px 11px;
+            font-size: 12px;
+            white-space: nowrap
+        }
+
+        .chip.active {
+            background: var(--a);
+            border-color: var(--a);
+            color: white
+        }
+
+        .filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 18px 0
+        }
+
+        .filters select,
+        .filters input {
+            border: 1px solid var(--b);
+            border-radius: 8px;
+            background: var(--s);
+            padding: 9px 11px
+        }
+
+        .filters .search {
+            min-width: 220px
+        }
+
+        .page {
+            padding: 28px 0 54px
+        }
+
+        .crumb {
+            font-size: 12px;
+            color: var(--m);
+            margin-bottom: 15px
+        }
+
+        .crumb button {
+            border: 0;
+            background: none;
+            color: var(--a);
+            padding: 0
+        }
+
+        .roadhead {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px
+        }
+
+        .roadhead h1 {
+            font-size: 31px;
+            letter-spacing: -.8px;
+            margin: 5px 0
+        }
+
+        .roadhead p {
+            color: var(--m);
+            max-width: 780px;
+            margin: 5px 0
+        }
+
+        .actions.right {
+            justify-content: flex-end;
+            flex-wrap: wrap
+        }
+
+        .summary {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            border-block: 1px solid var(--b);
+            padding: 13px 0;
+            margin: 14px 0
+        }
+
+        .summary .line {
+            width: 150px;
+            margin: 0
+        }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            border-bottom: 1px solid var(--b);
+            overflow: auto;
+            margin: 20px 0
+        }
+
+        .tab {
+            border: 0;
+            border-bottom: 2px solid transparent;
+            background: none;
+            color: var(--m);
+            padding: 10px 12px;
+            white-space: nowrap
+        }
+
+        .tab.active {
+            border-color: var(--a);
+            color: var(--a);
+            font-weight: 700
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 235px;
+            gap: 22px
+        }
+
+        .tools {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 13px
+        }
+
+        .tools input {
+            flex: 1;
+            min-width: 160px;
+            border: 1px solid var(--b);
+            border-radius: 8px;
+            background: var(--s);
+            padding: 8px
+        }
+
+        .stage {
+            border: 1px solid var(--b);
+            background: var(--s);
+            border-radius: 9px;
+            margin: 12px 0;
+            overflow: hidden
+        }
+
+        .stagehead {
+            background: var(--s2);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 12px
+        }
+
+        .stagehead small {
+            display: block;
+            color: var(--m)
+        }
+
+        .num {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--a)
+        }
+
+        .meter {
+            margin-left: auto;
+            color: var(--m);
+            font-size: 11px;
+            white-space: nowrap
+        }
+
+        .stagehead button {
+            border: 0;
+            background: none
+        }
+
+        .topics {
+            padding: 2px 14px 8px
+        }
+
+        .topic {
+            display: grid;
+            grid-template-columns: 23px 1fr auto;
+            gap: 8px;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--b)
+        }
+
+        .topic:last-child {
+            border: 0
+        }
+
+        .topic input {
+            accent-color: var(--a);
+            width: 18px;
+            height: 18px
+        }
+
+        .topic b {
+            font-size: 13px
+        }
+
+        .topic small {
+            display: block;
+            color: var(--m);
+            font-size: 11px
+        }
+
+        .topic aside {
+            display: flex;
+            gap: 4px;
+            align-items: center
+        }
+
+        .topic aside button {
+            border: 0;
+            background: none;
+            color: var(--a)
+        }
+
+        .side {
+            position: sticky;
+            top: 85px;
+            align-self: start
+        }
+
+        .panel {
+            padding: 15px;
+            margin-bottom: 11px
+        }
+
+        .panel h3 {
+            font-size: 14px;
+            margin: 0 0 8px
+        }
+
+        .panel p,
+        .panel li {
+            font-size: 12px;
+            color: var(--m)
+        }
+
+        .panel ul {
+            padding-left: 18px
+        }
+
+        .empty {
+            border: 1px dashed var(--b);
+            border-radius: 10px;
+            padding: 32px;
+            text-align: center;
+            color: var(--m);
+            background: var(--s)
+        }
+
+        .continue {
+            padding: 14px
+        }
+
+        .continue h3 {
+            font-size: 14px;
+            margin: 0
+        }
+
+        .continue small {
+            color: var(--m)
+        }
+
+        .continuegrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: #11182780;
+            z-index: 60;
+            display: flex;
+            justify-content: flex-end
+        }
+
+        .drawer {
+            width: min(500px, 100%);
+            background: var(--s);
+            padding: 24px;
+            overflow: auto
+        }
+
+        .drawerhead {
+            display: flex;
+            justify-content: space-between
+        }
+
+        .drawer h2 {
+            margin: 8px 0
+        }
+
+        .close {
+            border: 0;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px
+        }
+
+        .toast {
+            position: fixed;
+            z-index: 80;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #202631;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 15px
+        }
+
+        .footer {
+            border-top: 1px solid var(--b);
+            padding: 23px 0;
+            color: var(--m);
+            font-size: 12px
+        }
+
+        .footerrow {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px
+        }
+
+        .mobile {
+            display: none
+        }
+
+        .project {
+            padding: 13px 0;
+            border-bottom: 1px solid var(--b)
+        }
+
+        .plan {
+            border: 1px solid var(--b);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0
+        }
+
+        .tablewrap {
+            overflow: auto
+        }
+
+        table {
+            border-collapse: collapse;
+            min-width: 600px;
+            width: 100%
+        }
+
+        td,
+        th {
+            border: 1px solid var(--b);
+            padding: 9px;
+            text-align: left;
+            vertical-align: top
+        }
+
+        @media(max-width:930px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .layout {
+                grid-template-columns: 1fr
+            }
+
+            .side {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 9px
+            }
+
+            .side .panel {
+                margin: 0
+            }
+        }
+
+        @media(max-width:680px) {
+            .shell {
+                padding: 0 15px
+            }
+
+            .bar {
+                height: 57px;
+                gap: 8px
+            }
+
+            .brand {
+                min-width: 0
+            }
+
+            .brand small {
+                display: none
+            }
+
+            .search.global,
+            nav {
+                display: none
+            }
+
+            .mobile {
+                display: none;
+                position: absolute;
+                top: 57px;
+                left: 0;
+                right: 0;
+                background: var(--s);
+                padding: 10px 16px;
+                border-bottom: 1px solid var(--b)
+            }
+
+            .mobile.open {
+                display: grid
+            }
+
+            .mobile button {
+                text-align: left;
+                padding: 10px;
+                border: 0;
+                background: none
+            }
+
+            .menu {
+                display: block;
+                margin-left: auto
+            }
+
+            .hero {
+                padding: 34px 0 18px
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 9px
+            }
+
+            .field,
+            .card {
+                padding: 12px
+            }
+
+            .card {
+                min-height: 215px
+            }
+
+            .card h3 {
+                font-size: 14px
+            }
+
+            .section {
+                padding: 18px 0
+            }
+
+            .sh h2,
+            .title {
+                font-size: 20px
+            }
+
+            .roadhead {
+                display: block
+            }
+
+            .roadhead h1 {
+                font-size: 27px
+            }
+
+            .actions.right {
+                justify-content: flex-start;
+                margin-top: 12px
+            }
+
+            .summary {
+                gap: 10px
+            }
+
+            .summary .line {
+                width: 110px
+            }
+
+            .side {
+                grid-template-columns: 1fr
+            }
+
+            .continuegrid {
+                grid-template-columns: 1fr
+            }
+
+            .stagehead {
+                padding: 10px
+            }
+
+            .topics {
+                padding: 2px 10px
+            }
+
+            .topic {
+                gap: 6px
+            }
+
+            .topic aside .pill {
+                display: none
+            }
+
+            .footerrow {
+                display: block
+            }
+
+            .footerrow>div {
+                margin: 7px 0
+            }
+        }
+
+        @media(max-width:370px) {
+            .shell {
+                padding: 0 11px
+            }
+
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .card {
+                min-height: unset
+            }
+
+            .hero h1 {
+                font-size: 34px
+            }
+        }
+
+        @media print {
+
+            .header,
+            .footer,
+            .actions,
+            .tabs,
+            .tools,
+            .side,
+            .bookmark,
+            .topic input,
+            .stagehead button {
+                display: none !important
+            }
+
+            body {
+                background: white;
+                color: #111
+            }
+
+            .shell {
+                max-width: none;
+                padding: 0
+            }
+
+            .layout {
+                display: block
+            }
+
+            .stage {
+                break-inside: avoid
+            }
+
+            .topics {
+                display: block !important
+            }
+
+            .stagehead {
+                background: #eee
+            }
+        }
+
+        /* PathForge focused workspace redesign */
+        :root {
+            --bg: #FAFAF9;
+            --s: #FFFFFF;
+            --s2: #F4F4F2;
+            --t: #18181B;
+            --m: #6B7280;
+            --faint: #9CA3AF;
+            --b: #E7E5E4;
+            --a: #4F46E5;
+            --a2: #EEF0FF;
+            --good: #16A34A;
+            --goodsoft: #E8F7EE;
+            --warn: #D97706;
+            --warnsoft: #FEF3E2;
+            --r: 16px
+        }
+
+        body.dark {
+            --bg: #0B0D12;
+            --s: #12151C;
+            --s2: #181C25;
+            --b: #232834;
+            --t: #E8EAF0;
+            --m: #9AA3B2;
+            --faint: #727d8d;
+            --a: #8B93FF;
+            --a2: #252744;
+            --good: #4ADE80;
+            --goodsoft: #193125;
+            --warn: #FBBF24;
+            --warnsoft: #382c17
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, system-ui, sans-serif;
+            line-height: 1.55;
+            letter-spacing: -.005em;
+            transition: background .18s, color .18s
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -.02em
+        }
+
+        .workspace-side {
+            position: fixed;
+            z-index: 35;
+            inset: 0 auto 0 0;
+            width: 264px;
+            background: var(--s);
+            border-right: 1px solid var(--b);
+            display: flex;
+            flex-direction: column;
+            padding: 17px 12px;
+            transition: width .18s;
+            overflow: hidden
+        }
+
+        .side-brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3px 19px
+        }
+
+        .side-brand .brand {
+            min-width: 0
+        }
+
+        .side-brand .brand small {
+            display: none
+        }
+
+        .side-brand .mark {
+            background: var(--a);
+            border-radius: 10px
+        }
+
+        .icon-btn {
+            border: 0;
+            background: transparent;
+            border-radius: 9px;
+            width: 36px;
+            height: 36px;
+            color: var(--m)
+        }
+
+        .side-nav {
+            overflow: auto;
+            flex: 1
+        }
+
+        .side-label {
+            font-size: 10px;
+            letter-spacing: .12em;
+            font-weight: 750;
+            color: var(--faint);
+            padding: 13px 10px 7px
+        }
+
+        .side-nav>button,
+        .side-fields button,
+        .side-bottom button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            text-align: left;
+            border: 0;
+            background: transparent;
+            border-radius: 9px;
+            min-height: 38px;
+            padding: 7px 11px;
+            color: var(--m);
+            font-size: 13px;
+            position: relative
+        }
+
+        .side-nav>button i,
+        .side-bottom i,
+        .bottom-tabs svg {
+            width: 18px;
+            height: 18px;
+            display: inline-flex
+        }
+
+        .side-nav>button:hover,
+        .side-fields button:hover,
+        .side-bottom button:hover {
+            background: var(--s2);
+            color: var(--t)
+        }
+
+        .side-nav>button.active {
+            background: var(--a2);
+            color: var(--a);
+            font-weight: 650
+        }
+
+        .side-nav>button.active:before {
+            content: "";
+            position: absolute;
+            left: -11px;
+            top: 7px;
+            bottom: 7px;
+            width: 3px;
+            background: var(--a);
+            border-radius: 0 3px 3px 0
+        }
+
+        .field-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .field-label button {
+            width: 24px;
+            min-height: 24px;
+            justify-content: center;
+            padding: 0
+        }
+
+        .side-fields button {
+            min-height: 33px;
+            font-size: 12px;
+            padding: 5px 10px
+        }
+
+        .side-fields button i {
+            width: 17px;
+            height: 17px
+        }
+
+        .side-fields button small {
+            margin-left: auto;
+            color: var(--faint)
+        }
+
+        .side-bottom {
+            border-top: 1px solid var(--b);
+            padding-top: 8px
+        }
+
+        .side-bottom button {
+            min-height: 36px
+        }
+
+        .workspace {
+            margin-left: 264px;
+            min-height: 100dvh;
+            transition: margin .18s
+        }
+
+        .workspace.collapsed {
+            margin-left: 72px
+        }
+
+        .workspace-side.collapsed {
+            width: 72px
+        }
+
+        .workspace-side.collapsed .brand span:not(.mark),
+        .workspace-side.collapsed .side-nav button span,
+        .workspace-side.collapsed .side-label,
+        .workspace-side.collapsed .side-bottom button span,
+        .workspace-side.collapsed .side-fields {
+            display: none
+        }
+
+        .workspace-side.collapsed .side-nav>button,
+        .workspace-side.collapsed .side-bottom button {
+            justify-content: center;
+            font-size: 0
+        }
+
+        .utility {
+            height: 56px;
+            position: sticky;
+            top: 0;
+            z-index: 25;
+            background: color-mix(in srgb, var(--bg) 91%, transparent);
+            backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            padding: 0 34px;
+            gap: 20px
+        }
+
+        .utility-crumb {
+            font-size: 12px;
+            color: var(--m);
+            white-space: nowrap
+        }
+
+        .utility-crumb span {
+            padding: 0 8px;
+            color: var(--faint)
+        }
+
+        .command-trigger {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: auto;
+            border: 1px solid var(--b);
+            background: var(--s);
+            border-radius: 10px;
+            padding: 8px 12px;
+            color: var(--m);
+            width: min(440px, 52vw);
+            text-align: left;
+            font-size: 13px
+        }
+
+        .command-trigger span {
+            flex: 1
+        }
+
+        .command-trigger kbd {
+            font-size: 11px;
+            border: 1px solid var(--b);
+            border-radius: 5px;
+            padding: 1px 6px;
+            background: var(--s2)
+        }
+
+        .utility-actions {
+            display: flex;
+            gap: 10px
+        }
+
+        .utility-actions button {
+            border: 0;
+            background: transparent;
+            color: var(--m);
+            display: flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .settings-pop {
+            position: fixed;
+            right: 30px;
+            top: 50px;
+            z-index: 50;
+            padding: 8px;
+            background: var(--s);
+            border: 1px solid var(--b);
+            border-radius: 10px;
+            box-shadow: 0 12px 35px #0002
+        }
+
+        .settings-pop button {
+            border: 0;
+            background: none;
+            padding: 9px 12px
+        }
+
+        .mobile-top,
+        .bottom-tabs {
+            display: none
+        }
+
+        #app>.shell {
+            max-width: 1440px;
+            padding: 0 clamp(24px, 4vw, 64px)
+        }
+
+        .hero {
+            padding: 37px 0 17px;
+            max-width: 850px
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            line-height: 1.1
+        }
+
+        .hero .search {
+            width: min(620px, 100%)
+        }
+
+        .hero input {
+            border-radius: 14px;
+            padding: 15px 16px 15px 43px
+        }
+
+        .stats {
+            font-variant-numeric: tabular-nums
+        }
+
+        .section {
+            padding: 22px 0
+        }
+
+        .sh h2,
+        .title {
+            font-size: 20px
+        }
+
+        .field {
+            border: 0;
+            background: transparent;
+            min-height: unset;
+            padding: 13px 11px;
+            transition: background .17s
+        }
+
+        .field:hover {
+            background: var(--s2)
+        }
+
+        .field-icon,
+        .ico {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--a2);
+            color: var(--a);
+            margin-bottom: 9px
+        }
+
+        .field strong {
+            font-size: 12px;
+            font-weight: 650
+        }
+
+        .field small {
+            font-size: 11px
+        }
+
+        .grid {
+            gap: 8px
+        }
+
+        .card {
+            border-radius: 14px;
+            box-shadow: none;
+            padding: 14px;
+            transition: transform .17s, background .17s, border-color .17s
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            background: var(--s)
+        }
+
+        .card h3 {
+            font-size: 14px
+        }
+
+        .card .ico {
+            margin: 0
+        }
+
+        .road-card .ico {
+            margin: 0
+        }
+
+        .card .pill {
+            color: var(--m)
+        }
+
+        .field:nth-child(1) .field-icon {
+            background: #e9f0ff;
+            color: #365eaa
+        }
+
+        .field:nth-child(2) .field-icon {
+            background: #f0eaff;
+            color: #6947a6
+        }
+
+        .field:nth-child(3) .field-icon {
+            background: #e8f4f1;
+            color: #317462
+        }
+
+        .field:nth-child(4) .field-icon {
+            background: #fff1e7;
+            color: #a56228
+        }
+
+        .field:nth-child(5) .field-icon {
+            background: #fff4d8;
+            color: #9b7719
+        }
+
+        .field:nth-child(6) .field-icon {
+            background: #e7f4fa;
+            color: #3b7894
+        }
+
+        .field:nth-child(7) .field-icon {
+            background: #edf1f2;
+            color: #4f6067
+        }
+
+        .field:nth-child(8) .field-icon {
+            background: #f8eaf0;
+            color: #984b70
+        }
+
+        .field:nth-child(9) .field-icon {
+            background: #e7efff;
+            color: #466aa0
+        }
+
+        .field:nth-child(10) .field-icon {
+            background: #eef2e5;
+            color: #64823c
+        }
+
+        .field:nth-child(11) .field-icon {
+            background: #f4eafa;
+            color: #8754a6
+        }
+
+        .field:nth-child(12) .field-icon {
+            background: #f2eee8;
+            color: #806847
+        }
+
+        .field:nth-child(13) .field-icon {
+            background: #e9f2ec;
+            color: #467959
+        }
+
+        .field:nth-child(14) .field-icon {
+            background: #f7eee4;
+            color: #956d42
+        }
+
+        .field:nth-child(15) .field-icon {
+            background: #e7f4f4;
+            color: #377e82
+        }
+
+        .field:nth-child(16) .field-icon {
+            background: #eeeafa;
+            color: #695a9d
+        }
+
+        .field:nth-child(17) .field-icon {
+            background: #eaf1ed;
+            color: #518064
+        }
+
+        .field:nth-child(18) .field-icon {
+            background: #fdf0d8;
+            color: #a47616
+        }
+
+        .field-icon svg {
+            width: 23px;
+            height: 23px
+        }
+
+        .stats b {
+            font-variant-numeric: tabular-nums
+        }
+
+        .hero-stats {
+            gap: 22px
+        }
+
+        .continuegrid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+        }
+
+        .continue {
+            border-radius: 15px;
+            border-color: var(--b);
+            padding: 17px
+        }
+
+        .page {
+            padding-top: 23px
+        }
+
+        .roadhead {
+            align-items: center
+        }
+
+        .roadhead h1 {
+            font-size: 30px
+        }
+
+        .roadhead .pill {
+            background: transparent;
+            border: 1px solid var(--b)
+        }
+
+        .summary {
+            border: 0;
+            background: var(--s);
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin: 13px 0
+        }
+
+        .summary b {
+            font-variant-numeric: tabular-nums
+        }
+
+        .layout {
+            grid-template-columns: 210px minmax(0, 1fr) 260px;
+            gap: 22px;
+            align-items: start
+        }
+
+        .stage-nav {
+            position: sticky;
+            top: 75px;
+            max-height: calc(100dvh - 90px);
+            overflow: auto;
+            padding: 12px 0
+        }
+
+        .stage-nav h3 {
+            font-size: 12px;
+            color: var(--m);
+            padding: 0 10px
+        }
+
+        .stage-nav button {
+            border: 0;
+            background: none;
+            color: var(--m);
+            width: 100%;
+            display: flex;
+            text-align: left;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 12px
+        }
+
+        .stage-nav button:hover,
+        .stage-nav button.active {
+            background: var(--a2);
+            color: var(--a)
+        }
+
+        .stage-nav .stage-small {
+            font-size: 10px;
+            border: 1px solid var(--b);
+            border-radius: 50%;
+            width: 21px;
+            height: 21px;
+            display: grid;
+            place-items: center;
+            flex: none
+        }
+
+        .layout>.side {
+            top: 76px
+        }
+
+        .stage {
+            border-radius: 14px;
+            scroll-margin-top: 75px
+        }
+
+        .stagehead {
+            padding: 15px 17px
+        }
+
+        .stagehead .num {
+            font-size: 18px;
+            opacity: .55
+        }
+
+        .topic {
+            min-height: 49px
+        }
+
+        .topic input {
+            width: 19px;
+            height: 19px
+        }
+
+        .topic b {
+            font-size: 14px
+        }
+
+        .topic aside button {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px
+        }
+
+        .topic aside button:hover {
+            background: var(--s2)
+        }
+
+        .panel {
+            border-radius: 14px;
+            box-shadow: none
+        }
+
+        .tabs {
+            position: sticky;
+            top: 56px;
+            z-index: 18;
+            background: var(--bg);
+            padding-top: 4px
+        }
+
+        .tab {
+            padding: 10px 15px
+        }
+
+        .btn {
+            min-height: 38px;
+            border-radius: 9px
+        }
+
+        .btn.primary {
+            background: var(--a)
+        }
+
+        .pill {
+            font-variant-numeric: tabular-nums
+        }
+
+        .results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3px
+        }
+
+        .results-list .card {
+            display: grid;
+            grid-template-columns: 40px minmax(180px, 1.1fr) minmax(200px, 1.5fr) auto auto;
+            align-items: center;
+            gap: 13px;
+            min-height: 70px;
+            border: 0;
+            border-bottom: 1px solid var(--b);
+            border-radius: 0;
+            padding: 10px 12px
+        }
+
+        .results-list .card .top {
+            display: contents
+        }
+
+        .results-list .card .ico {
+            grid-column: 1;
+            grid-row: 1/3;
+            margin: 0
+        }
+
+        .results-list .card h3 {
+            grid-column: 2;
+            grid-row: 1;
+            margin: 0
+        }
+
+        .results-list .card>p {
+            grid-column: 3;
+            grid-row: 1;
+            white-space: nowrap;
+            text-overflow: ellipsis
+        }
+
+        .results-list .card .meta {
+            grid-column: 2;
+            grid-row: 2;
+            padding: 0;
+            margin: 0
+        }
+
+        .results-list .card .pill {
+            grid-column: 4;
+            grid-row: 1
+        }
+
+        .results-list .card .bookmark {
+            grid-column: 5;
+            grid-row: 1
+        }
+
+        .results-list .card .actions {
+            grid-column: 6;
+            grid-row: 1/3;
+            margin: 0
+        }
+
+        .results-list .card>.line,
+        .results-list .card>small {
+            display: none
+        }
+
+        .results-list .card .bookmark {
+            grid-column: 5
+        }
+
+        .results-list .card .actions {
+            grid-column: 6
+        }
+
+        .catalog-layout {
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            gap: 28px
+        }
+
+        .filter-panel {
+            position: sticky;
+            top: 76px;
+            align-self: start
+        }
+
+        .filter-panel .filter-group {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--b)
+        }
+
+        .filter-panel label {
+            display: block;
+            margin: 7px 0;
+            font-size: 12px;
+            color: var(--m)
+        }
+
+        .filter-panel select {
+            width: 100%;
+            border: 1px solid var(--b);
+            border-radius: 8px;
+            padding: 8px;
+            background: var(--s)
+        }
+
+        .palette-back {
+            position: fixed;
+            inset: 0;
+            z-index: 70;
+            background: #11182766;
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 13vh 16px
+        }
+
+        .palette {
+            width: min(560px, 100%);
+            max-height: 70dvh;
+            overflow: hidden;
+            background: var(--s);
+            border: 1px solid var(--b);
+            border-radius: 17px;
+            box-shadow: 0 24px 70px #0003
+        }
+
+        .palette input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 0;
+            border-bottom: 1px solid var(--b);
+            background: transparent;
+            font-size: 16px
+        }
+
+        .palette-results {
+            max-height: 55dvh;
+            overflow: auto;
+            padding: 8px
+        }
+
+        .palette-results button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+            padding: 10px;
+            border: 0;
+            background: none;
+            border-radius: 9px
+        }
+
+        .palette-results button:hover,
+        .palette-results button.active {
+            background: var(--s2)
+        }
+
+        .palette-results small {
+            display: block;
+            color: var(--m)
+        }
+
+        .mobile-search-page {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background: var(--bg);
+            padding: calc(env(safe-area-inset-top) + 18px) 16px 20px;
+            overflow: auto
+        }
+
+        .topic-status {
+            color: var(--good)
+        }
+
+        .field-icon svg,
+        .ico svg,
+        .side-nav svg,
+        .side-bottom svg,
+        .utility svg,
+        .mobile-top svg,
+        .bottom-tabs svg {
+            display: block
+        }
+
+        .command-trigger:hover {
+            border-color: var(--a);
+            background: var(--s)
+        }
+
+        .toast {
+            bottom: calc(20px + env(safe-area-inset-bottom))
+        }
+
+        .card .actions .link {
+            font-size: 12px
+        }
+
+        .project-item {
+            border-radius: 13px
+        }
+
+        .footer {
+            margin-top: 15px
+        }
+
+        @media(min-width:1024px) {
+            #app .catalog-head {
+                display: block
+            }
+
+            #app .catalog-head>.filters {
+                display: none
+            }
+
+            #app .catalog-head>.chips {
+                display: none
+            }
+
+            .results-list .card {
+                grid-template-columns: 40px minmax(160px, 1fr) minmax(180px, 1.3fr) 110px 95px 115px
+            }
+
+            .results-list .card .actions .link {
+                display: none
+            }
+
+            .hero .global-search {
+                max-width: 620px
+            }
+
+            .section:nth-of-type(2) .grid {
+                grid-template-columns: repeat(6, minmax(0, 1fr))
+            }
+        }
+
+        @media(max-width:1023px) {
+            .workspace-side {
+                display: none
+            }
+
+            .workspace {
+                margin-left: 0 !important;
+                padding-bottom: calc(70px + env(safe-area-inset-bottom))
+            }
+
+            .utility {
+                display: none
+            }
+
+            .mobile-top {
+                display: flex;
+                position: sticky;
+                top: 0;
+                z-index: 28;
+                height: 58px;
+                align-items: center;
+                justify-content: center;
+                padding: 0 16px;
+                background: color-mix(in srgb, var(--bg) 90%, transparent);
+                backdrop-filter: blur(14px);
+                border-bottom: 1px solid color-mix(in srgb, var(--b) 70%, transparent)
+            }
+
+            .mobile-top h1 {
+                font-size: 16px;
+                margin: 0;
+                max-width: 65vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap
+            }
+
+            .mobile-top button {
+                position: absolute;
+                top: 8px;
+                border: 0;
+                background: transparent;
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                display: grid;
+                place-items: center
+            }
+
+            .mobile-back {
+                left: 9px
+            }
+
+            .mobile-search {
+                right: 9px
+            }
+
+            .bottom-tabs {
+                display: flex;
+                position: fixed;
+                z-index: 45;
+                inset: auto 0 0;
+                height: calc(64px + env(safe-area-inset-bottom));
+                padding: 4px 8px calc(4px + env(safe-area-inset-bottom));
+                background: color-mix(in srgb, var(--s) 90%, transparent);
+                backdrop-filter: blur(18px);
+                border-top: 1px solid var(--b);
+                justify-content: space-around;
+                box-shadow: 0 -4px 22px #0000000c
+            }
+
+            .bottom-tabs button {
+                position: relative;
+                border: 0;
+                background: none;
+                color: var(--m);
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+                font-size: 0;
+                min-width: 44px;
+                min-height: 52px
+            }
+
+            .bottom-tabs button svg {
+                width: 22px;
+                height: 22px
+            }
+
+            .bottom-tabs button small {
+                font-size: 10px
+            }
+
+            .bottom-tabs button.active {
+                color: var(--a)
+            }
+
+            .bottom-tabs button.active:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 32px;
+                height: 25px;
+                border-radius: 99px;
+                background: var(--a2);
+                z-index: -1
+            }
+
+            .bottom-tabs button:active {
+                transform: scale(.94)
+            }
+
+            #savedDot {
+                display: none;
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                background: var(--a);
+                border-radius: 50%;
+                top: 6px;
+                right: calc(50% - 17px)
+            }
+
+            .bottom-tabs button.has-saved #savedDot {
+                display: block
+            }
+
+            #app>.shell {
+                padding: 0 16px;
+                max-width: 720px
+            }
+
+            .hero {
+                padding-top: 22px
+            }
+
+            .hero h1 {
+                font-size: 29px
+            }
+
+            .hero p {
+                font-size: 14px;
+                margin: 7px 0 15px
+            }
+
+            .stats {
+                gap: 9px 15px;
+                font-size: 11px
+            }
+
+            .stats b {
+                font-size: 12px
+            }
+
+            .section {
+                padding: 17px 0
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .field {
+                min-height: 90px;
+                padding: 10px 7px;
+                text-align: center
+            }
+
+            .field-icon {
+                margin: 0 auto 6px
+            }
+
+            .field strong {
+                display: block
+            }
+
+            .field small {
+                display: none
+            }
+
+            .card {
+                min-height: 200px
+            }
+
+            .roadhead {
+                display: block
+            }
+
+            .roadhead h1 {
+                font-size: 25px
+            }
+
+            .roadhead .actions {
+                margin-top: 10px
+            }
+
+            .layout {
+                display: block
+            }
+
+            .stage-nav,
+            .layout>.side {
+                display: none
+            }
+
+            .summary {
+                position: sticky;
+                top: 58px;
+                z-index: 15;
+                margin: 0 -16px 12px;
+                border-radius: 0;
+                padding: 9px 16px;
+                background: var(--s)
+            }
+
+            .summary .line {
+                flex: 1;
+                width: auto
+            }
+
+            .tabs {
+                top: 58px;
+                margin: 0 -16px 12px;
+                padding: 0 10px
+            }
+
+            .roadhead {
+                padding: 4px 0 10px
+            }
+
+            .stage {
+                border-radius: 12px
+            }
+
+            .stagehead {
+                min-height: 54px
+            }
+
+            .topic {
+                min-height: 54px
+            }
+
+            .topic aside button {
+                min-width: 36px;
+                min-height: 36px
+            }
+
+            .road-tools {
+                padding-bottom: 5px
+            }
+
+            .road-tools input {
+                width: 100%;
+                flex: auto
+            }
+
+            .footer {
+                padding-bottom: 12px
+            }
+
+            .footerrow {
+                font-size: 11px
+            }
+
+            .results-list .card {
+                min-height: 74px;
+                grid-template-columns: 42px minmax(0, 1fr) auto;
+                gap: 9px;
+                padding: 10px 4px
+            }
+
+            .results-list .card .top {
+                display: contents
+            }
+
+            .results-list .card .ico {
+                grid-column: 1;
+                grid-row: 1/3
+            }
+
+            .results-list .card h3 {
+                grid-column: 2;
+                grid-row: 1;
+                margin: 0;
+                font-size: 14px
+            }
+
+            .results-list .card>p {
+                grid-column: 2;
+                grid-row: 2;
+                white-space: nowrap;
+                text-overflow: ellipsis
+            }
+
+            .results-list .card .meta {
+                display: none
+            }
+
+            .results-list .card .pill {
+                grid-column: 3;
+                grid-row: 1
+            }
+
+            .results-list .card .bookmark {
+                grid-column: 3;
+                grid-row: 2
+            }
+
+            .results-list .card .actions {
+                display: none
+            }
+
+            .catalog-layout {
+                display: block
+            }
+
+            .mobile .card {
+                min-height: unset
+            }
+        }
+
+        @media(max-width:767px) {
+            .continuegrid {
+                display: flex;
+                overflow: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 8px
+            }
+
+            .continue {
+                flex: 0 0 min(84vw, 340px);
+                scroll-snap-align: start
+            }
+
+            .section:nth-of-type(2) .grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 14px;
+                padding-bottom: 5px
+            }
+
+            .section:nth-of-type(2) .field {
+                flex: 0 0 82px;
+                scroll-snap-align: start
+            }
+
+            .section:nth-of-type(2) .field strong {
+                font-size: 10px
+            }
+
+            .section:nth-of-type(2) .field-icon {
+                width: 54px;
+                height: 54px;
+                border-radius: 50%
+            }
+
+            .roadhead .actions.right .btn:not(.primary) {
+                display: none
+            }
+
+            .summary span {
+                font-size: 11px
+            }
+
+            .stagehead small {
+                max-width: 48vw;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis
+            }
+
+            .card .actions .link {
+                display: none
+            }
+
+            .filters {
+                gap: 6px
+            }
+
+            .filters select {
+                flex: 1
+            }
+
+            .project-item {
+                padding: 12px
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important
+            }
+        }
+
+        @media(max-width:1023px) {
+            .overlay {
+                align-items: flex-end;
+                justify-content: center
+            }
+
+            .drawer {
+                width: 100%;
+                max-height: 88dvh;
+                border-radius: 24px 24px 0 0;
+                padding: 22px 18px calc(20px + env(safe-area-inset-bottom));
+                overscroll-behavior: contain
+            }
+
+            .drawer:before {
+                content: "";
+                display: block;
+                width: 38px;
+                height: 4px;
+                border-radius: 4px;
+                background: var(--b);
+                margin: -10px auto 17px
+            }
+
+            .more-sheet {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                max-height: 88dvh;
+                border-radius: 24px 24px 0 0;
+                padding: 22px 20px calc(20px + env(safe-area-inset-bottom))
+            }
+
+            .more-sheet button {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 13px;
+                border: 0;
+                border-bottom: 1px solid var(--b);
+                background: none;
+                padding: 14px 5px;
+                text-align: left
+            }
+
+            .more-sheet h2 {
+                font-size: 20px
+            }
+
+            .mobile-top .mobile-back:not(.hidden) {
+                display: grid
+            }
+        }
+
+        .explore-options {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 9px;
+            margin: 22px 0
+        }
+
+        .explore-options .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 52px;
+            text-align: left
+        }
+
+        .timeline-mode .stage {
+            border-left: 3px solid var(--a2)
+        }
+
+        .checklist-mode .stage {
+            margin: 7px 0
+        }
+
+        .checklist-mode .stagehead {
+            padding: 9px 12px
+        }
+
+        .checklist-mode .topic {
+            min-height: 40px;
+            padding: 6px 0
+        }
+
+        .results-list .card .actions .link {
+            display: none
+        }
+
+        /* Precision design system: square geometry, shared borders, compact copy */
+        :root {
+            --bg: #FAFAF9;
+            --s: #FFFFFF;
+            --s2: #F4F4F2;
+            --s3: #ECECE9;
+            --t: #18181B;
+            --m: #52525B;
+            --faint: #8A8A93;
+            --b: #D4D4D8;
+            --strong: #A1A1AA;
+            --a: #4F46E5;
+            --a2: #EEF0FF;
+            --good: #16A34A;
+            --goodsoft: #E8F7EE;
+            --warn: #D97706;
+            --warnsoft: #FEF3E2;
+            --r: 0px
+        }
+
+        body.dark {
+            --bg: #0B0D12;
+            --s: #12151C;
+            --s2: #181C25;
+            --s3: #1F2430;
+            --b: #2E3544;
+            --strong: #4A5368;
+            --t: #E8EAF0;
+            --m: #A0A9B8;
+            --faint: #737d8e;
+            --a: #8B93FF;
+            --a2: rgba(139, 147, 255, .12);
+            --good: #4ADE80;
+            --goodsoft: #13291d;
+            --warn: #FBBF24;
+            --warnsoft: #332913
+        }
+
+        *,
+        *::before,
+        *::after {
+            border-radius: 0 !important
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--t);
+            text-wrap: pretty;
+            letter-spacing: 0;
+            transition: background .18s, color .18s
+        }
+
+        body.dark .panel,
+        body.dark .card,
+        body.dark .continue,
+        body.dark .stage,
+        body.dark .palette,
+        body.dark .drawer {
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04)
+        }
+
+        h1,
+        h2,
+        h3,
+        .title {
+            letter-spacing: -.02em;
+            text-wrap: balance
+        }
+
+        p {
+            max-width: 65ch
+        }
+
+        .workspace-side {
+            background: var(--s);
+            border-right: 1px solid var(--b)
+        }
+
+        .side-nav>button.active {
+            border: 1px solid var(--a);
+            border-left: 3px solid var(--a);
+            background: var(--a2)
+        }
+
+        .side-nav>button.active:before {
+            display: none
+        }
+
+        .side-nav>button,
+        .side-fields button,
+        .side-bottom button,
+        .icon-btn,
+        .btn,
+        .chip,
+        .field,
+        .card,
+        .panel,
+        .continue,
+        .stage,
+        .palette,
+        .drawer,
+        .dialog,
+        .settings-pop,
+        .command-trigger,
+        .mobile-top button,
+        .bottom-tabs button,
+        .toast,
+        .topic,
+        .topic-row,
+        .tab {
+            border-radius: 0 !important;
+            box-shadow: none
+        }
+
+        .workspace-side button,
+        .bottom-tabs button {
+            transition: background .16s cubic-bezier(.2, .8, .2, 1), color .16s, transform .16s
+        }
+
+        .workspace-side button:active,
+        .bottom-tabs button:active,
+        .btn:active,
+        .field:active {
+            transform: scale(.98)
+        }
+
+        .utility {
+            background: var(--bg);
+            border-bottom: 1px solid var(--b);
+            backdrop-filter: none
+        }
+
+        .command-trigger {
+            border: 1px solid var(--b);
+            background: var(--s);
+            width: min(560px, 54vw)
+        }
+
+        .command-trigger:hover,
+        .btn:hover,
+        .chip:hover {
+            border-color: var(--strong)
+        }
+
+        .btn {
+            border: 1px solid var(--b);
+            background: var(--s);
+            padding: 8px 12px;
+            min-height: 38px;
+            font-size: 13px
+        }
+
+        .btn.primary {
+            border-color: var(--a);
+            background: var(--a);
+            color: #fff
+        }
+
+        .btn:focus-visible,
+        .command-trigger:focus-visible,
+        .chip:focus-visible {
+            outline: 2px solid var(--a);
+            outline-offset: 2px
+        }
+
+        .pill,
+        .chip,
+        .tab,
+        .stage,
+        .card,
+        .panel,
+        .continue,
+        .field,
+        .filters input,
+        .filters select,
+        .road-tools input,
+        .road-tools select,
+        .topic input,
+        .palette input,
+        .drawer {
+            border-radius: 0 !important
+        }
+
+        .pill {
+            border: 1px solid var(--b);
+            background: var(--s2);
+            color: var(--m);
+            padding: 2px 7px
+        }
+
+        .card,
+        .panel,
+        .continue,
+        .stage {
+            border: 1px solid var(--b);
+            box-shadow: none
+        }
+
+        .card:hover {
+            border-color: var(--strong);
+            transform: none;
+            background: var(--s2)
+        }
+
+        .grid {
+            gap: 0
+        }
+
+        .grid>.card,
+        .grid>.field,
+        .grid>.panel {
+            margin: 0;
+            border-right: 0;
+            border-bottom: 0
+        }
+
+        .grid>.card:nth-child(4n),
+        .grid>.field:nth-child(6n) {
+            border-right: 1px solid var(--b)
+        }
+
+        .grid>.card:nth-last-child(-n+4),
+        .grid>.field:nth-last-child(-n+6) {
+            border-bottom: 1px solid var(--b)
+        }
+
+        .field {
+            border: 1px solid var(--b);
+            background: var(--s);
+            text-align: left;
+            min-height: 112px
+        }
+
+        .field-icon,
+        .ico {
+            border: 1px solid currentColor;
+            width: 40px;
+            height: 40px;
+            margin: 0 0 8px
+        }
+
+        .field-icon {
+            border-radius: 0
+        }
+
+        .field strong {
+            font-size: 12px;
+            line-height: 1.35
+        }
+
+        .field small {
+            font-size: 11px;
+            color: var(--m)
+        }
+
+        .section {
+            padding: 24px 0
+        }
+
+        .sh {
+            margin: 0 0 12px
+        }
+
+        .sh p,
+        .hero>p,
+        .hero>.stats {
+            display: none !important
+        }
+
+        .hero {
+            padding: 40px 0 20px
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            line-height: 44px;
+            margin: 0 0 18px
+        }
+
+        .hero .search input {
+            border: 1px solid var(--b);
+            border-radius: 0;
+            padding: 14px 14px 14px 42px
+        }
+
+        .hero .search input:focus,
+        .filters input:focus,
+        .road-tools input:focus {
+            border-color: var(--a)
+        }
+
+        .hero .search {
+            max-width: 560px
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            letter-spacing: .08em
+        }
+
+        .sh h2,
+        .title {
+            font-size: 20px
+        }
+
+        .card {
+            min-height: unset;
+            padding: 12px
+        }
+
+        .card h3 {
+            margin: 8px 0 4px
+        }
+
+        .card>p {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.4
+        }
+
+        .card .meta {
+            padding-top: 7px
+        }
+
+        .card .actions {
+            margin-top: 8px
+        }
+
+        .card .ico {
+            width: 40px;
+            height: 40px
+        }
+
+        .field-icon {
+            background: var(--a2);
+            color: var(--a)
+        }
+
+        .results-list {
+            border: 1px solid var(--b);
+            border-bottom: 0
+        }
+
+        .results-list .card {
+            border: 0;
+            border-bottom: 1px solid var(--b);
+            background: var(--s);
+            min-height: 68px
+        }
+
+        .results-list .card:hover {
+            background: var(--s2)
+        }
+
+        .results-list .card>p {
+            display: block;
+            font-size: 12px;
+            color: var(--m)
+        }
+
+        .results-list .card .meta {
+            font-size: 11px
+        }
+
+        .results-list .card .bookmark {
+            width: 36px;
+            height: 36px;
+            display: grid;
+            place-items: center
+        }
+
+        .results-list .card .bookmark svg {
+            width: 18px;
+            height: 18px
+        }
+
+        .filters input,
+        .filters select,
+        .road-tools input,
+        .road-tools select {
+            border: 1px solid var(--b);
+            background: var(--s);
+            color: var(--t);
+            min-height: 40px
+        }
+
+        .chips {
+            gap: 0;
+            border-bottom: 1px solid var(--b);
+            padding-bottom: 0
+        }
+
+        .chip {
+            border: 1px solid var(--b);
+            margin-right: -1px;
+            background: var(--s);
+            padding: 7px 10px
+        }
+
+        .chip.active {
+            border: 2px solid var(--a);
+            background: var(--a2);
+            color: var(--a);
+            z-index: 1
+        }
+
+        .tabs {
+            border-bottom: 1px solid var(--b);
+            background: var(--bg)
+        }
+
+        .tab {
+            border-bottom: 2px solid transparent
+        }
+
+        .tab.active {
+            border-bottom: 3px solid var(--a);
+            color: var(--a)
+        }
+
+        .roadhead h1 {
+            font-size: 30px;
+            line-height: 34px
+        }
+
+        .roadhead p {
+            font-size: 14px;
+            line-height: 21px
+        }
+
+        .roadhead .pill {
+            border: 1px solid var(--b)
+        }
+
+        .summary {
+            border: 1px solid var(--b);
+            border-left: 3px solid var(--a);
+            border-radius: 0;
+            padding: 12px 16px
+        }
+
+        .line {
+            height: 4px;
+            border: 1px solid var(--b);
+            border-radius: 0;
+            background: var(--s2)
+        }
+
+        .line i {
+            border-radius: 0;
+            background: var(--a);
+            transition: width .35s cubic-bezier(.2, .8, .2, 1)
+        }
+
+        .stage {
+            border: 1px solid var(--b);
+            border-left: 1px solid var(--strong);
+            margin: 0 0 12px
+        }
+
+        .stagehead {
+            border-bottom: 1px solid var(--b);
+            background: var(--s2);
+            padding: 12px 14px
+        }
+
+        .stagehead .num {
+            font-size: 18px;
+            color: var(--a);
+            opacity: .8
+        }
+
+        .topic {
+            border-bottom: 1px solid var(--b);
+            min-height: 48px
+        }
+
+        .topic input {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid var(--strong);
+            background: var(--s);
+            border-radius: 0 !important
+        }
+
+        .topic input:checked {
+            border-color: var(--good);
+            background: var(--good);
+            position: relative
+        }
+
+        .topic input:checked:after {
+            content: "✓";
+            color: #fff;
+            position: absolute;
+            inset: -3px 0 0 2px;
+            font-size: 14px
+        }
+
+        .topic b {
+            font-weight: 600
+        }
+
+        .topic aside .pill {
+            font-size: 10px;
+            text-transform: capitalize
+        }
+
+        .side .panel {
+            border: 1px solid var(--b);
+            margin-bottom: 8px
+        }
+
+        .stage-nav button {
+            border-radius: 0;
+            padding: 8px;
+            border-left: 2px solid transparent
+        }
+
+        .stage-nav button.active,
+        .stage-nav button:hover {
+            background: var(--a2);
+            border-left-color: var(--a)
+        }
+
+        .stage-small {
+            border-radius: 0 !important
+        }
+
+        .palette-back {
+            background: rgba(10, 12, 18, .56);
+            backdrop-filter: none
+        }
+
+        .palette {
+            border: 1px solid var(--strong);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .18)
+        }
+
+        .palette-results button {
+            border-radius: 0
+        }
+
+        .drawer {
+            border-left: 1px solid var(--strong);
+            box-shadow: -8px 0 24px rgba(0, 0, 0, .16)
+        }
+
+        .overlay {
+            background: rgba(10, 12, 18, .52)
+        }
+
+        .toast {
+            border: 1px solid #18181B;
+            background: #18181B;
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .18)
+        }
+
+        .settings-pop {
+            border: 1px solid var(--strong);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .12)
+        }
+
+        .field-icon,
+        .ico {
+            flex: none
+        }
+
+        .results-list .card .pill {
+            background: var(--s2)
+        }
+
+        .level-beginner {
+            background: var(--goodsoft);
+            color: var(--good)
+        }
+
+        .level-intermediate {
+            background: var(--warnsoft);
+            color: var(--warn)
+        }
+
+        .level-advanced {
+            background: var(--a2);
+            color: var(--a)
+        }
+
+        .mobile-top {
+            background: var(--s);
+            backdrop-filter: none
+        }
+
+        .bottom-tabs {
+            border-radius: 0;
+            background: var(--s);
+            backdrop-filter: none;
+            box-shadow: none
+        }
+
+        .bottom-tabs button+button {
+            border-left: 1px solid var(--b)
+        }
+
+        .bottom-tabs button.active:before {
+            display: none
+        }
+
+        .bottom-tabs button.active:after {
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--a)
+        }
+
+        .bottom-tabs button.has-saved #savedDot {
+            border-radius: 0;
+            width: 6px;
+            height: 6px
+        }
+
+        .more-sheet,
+        .drawer {
+            border-top: 1px solid var(--strong);
+            border-radius: 0 !important
+        }
+
+        .more-sheet button {
+            border-radius: 0
+        }
+
+        .explore-options .btn {
+            border: 1px solid var(--b)
+        }
+
+        .footer {
+            display: none !important
+        }
+
+        .global-search,
+        .header {
+            display: none
+        }
+
+        .crumb {
+            color: var(--m)
+        }
+
+        .muted,
+        .desc {
+            color: var(--m)
+        }
+
+        .mobile-top {
+            padding-top: env(safe-area-inset-top)
+        }
+
+        .toast {
+            bottom: calc(16px + env(safe-area-inset-bottom))
+        }
+
+        .palette input {
+            border-bottom: 1px solid var(--b)
+        }
+
+        .topic-row {
+            border-radius: 0
+        }
+
+        .panel h3 {
+            font-size: 15px
+        }
+
+        .filters select,
+        select {
+            appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, var(--m) 50%), linear-gradient(135deg, var(--m) 50%, transparent 50%);
+            background-position: calc(100% - 14px) 17px, calc(100% - 10px) 17px;
+            background-size: 4px 4px;
+            background-repeat: no-repeat;
+            padding-right: 25px
+        }
+
+        input[type=checkbox] {
+            accent-color: var(--a)
+        }
+
+        ::selection {
+            background: var(--a2);
+            color: var(--t)
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--strong);
+            border: 2px solid var(--bg)
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg)
+        }
+
+        .section .grid {
+            border-top: 1px solid var(--b);
+            border-left: 1px solid var(--b)
+        }
+
+        .section .grid>.field {
+            border-top: 0;
+            border-left: 0
+        }
+
+        .section .grid>.card {
+            border-top: 0;
+            border-left: 0
+        }
+
+        @media(min-width:1024px) {
+            .workspace-side {
+                width: 264px
+            }
+
+            .workspace-side.collapsed {
+                width: 72px
+            }
+
+            .workspace {
+                max-width: none
+            }
+
+            .workspace>.utility {
+                padding-inline: 32px
+            }
+
+            .workspace.collapsed {
+                margin-left: 72px
+            }
+
+            .layout {
+                grid-template-columns: 224px minmax(420px, 760px) minmax(250px, 300px);
+                gap: 20px
+            }
+
+            .shell.page {
+                max-width: 1424px
+            }
+
+            .results-list .card {
+                grid-template-columns: 40px minmax(150px, 1fr) minmax(170px, 1.2fr) 105px 85px 105px
+            }
+
+            .stage-nav {
+                top: 76px
+            }
+
+            .side {
+                top: 76px
+            }
+
+            .section .grid {
+                grid-template-columns: repeat(6, minmax(0, 1fr))
+            }
+
+            .continuegrid {
+                display: flex;
+                overflow-x: auto
+            }
+
+            .continue {
+                min-width: 270px
+            }
+        }
+
+        @media(max-width:1023px) {
+            .workspace-side {
+                display: none
+            }
+
+            .workspace {
+                margin: 0 !important;
+                padding-bottom: calc(68px + env(safe-area-inset-bottom))
+            }
+
+            .utility {
+                display: none
+            }
+
+            .mobile-top {
+                height: calc(56px + env(safe-area-inset-top));
+                padding-top: env(safe-area-inset-top)
+            }
+
+            .bottom-tabs {
+                height: calc(64px + env(safe-area-inset-bottom));
+                padding-bottom: env(safe-area-inset-bottom)
+            }
+
+            #app>.shell {
+                max-width: 720px;
+                padding-inline: 16px
+            }
+
+            .hero {
+                padding: 20px 0 14px
+            }
+
+            .hero h1 {
+                font-size: 30px;
+                line-height: 34px
+            }
+
+            .hero .search {
+                width: 100%
+            }
+
+            .section {
+                padding: 16px 0
+            }
+
+            .section .grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .section .grid>.field {
+                min-height: 108px;
+                padding: 10px
+            }
+
+            .field-icon {
+                width: 40px;
+                height: 40px
+            }
+
+            .field strong {
+                font-size: 11px
+            }
+
+            .results-list .card {
+                border-bottom: 1px solid var(--b);
+                grid-template-columns: 40px minmax(0, 1fr) 58px;
+                min-height: 72px;
+                padding: 10px
+            }
+
+            .results-list .card .meta {
+                display: none
+            }
+
+            .results-list .card .pill {
+                grid-column: 3;
+                grid-row: 1;
+                font-size: 10px
+            }
+
+            .results-list .card .bookmark {
+                grid-column: 3;
+                grid-row: 2
+            }
+
+            .roadhead {
+                display: block
+            }
+
+            .roadhead h1 {
+                font-size: 25px;
+                line-height: 30px
+            }
+
+            .roadhead .actions {
+                display: flex
+            }
+
+            .roadhead .actions .btn:not(.primary) {
+                display: none
+            }
+
+            .summary {
+                position: sticky;
+                top: calc(56px + env(safe-area-inset-top));
+                z-index: 15;
+                margin: 0 -16px 10px;
+                padding: 8px 16px
+            }
+
+            .tabs {
+                top: calc(56px + env(safe-area-inset-top));
+                margin: 0 -16px 12px
+            }
+
+            .layout {
+                display: block
+            }
+
+            .stage-nav,
+            .layout>.side {
+                display: none
+            }
+
+            .stage {
+                margin-bottom: 8px
+            }
+
+            .topic {
+                min-height: 52px
+            }
+
+            .overlay {
+                align-items: flex-end;
+                justify-content: center
+            }
+
+            .drawer {
+                width: 100%;
+                max-height: 88dvh;
+                border-radius: 0 !important;
+                padding: 20px 16px calc(18px + env(safe-area-inset-bottom));
+                overscroll-behavior: contain
+            }
+
+            .drawer:before {
+                content: "";
+                display: block;
+                width: 32px;
+                height: 3px;
+                background: var(--strong);
+                margin: -8px auto 16px
+            }
+
+            .more-sheet {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                border-radius: 0 !important;
+                padding: 20px 16px calc(18px + env(safe-area-inset-bottom))
+            }
+
+            .more-sheet button {
+                min-height: 48px;
+                border-bottom: 1px solid var(--b)
+            }
+
+            .explore-options {
+                grid-template-columns: 1fr
+            }
+
+            .toast {
+                bottom: calc(72px + env(safe-area-inset-bottom))
+            }
+
+            .footer {
+                display: none !important
+            }
+
+            .section:nth-of-type(2) .grid {
+                display: grid;
+                overflow: visible
+            }
+
+            .mobile-top h1 {
+                font-size: 16px
+            }
+        }
+
+        @media(max-width:380px) {
+            .section .grid {
+                gap: 0
+            }
+
+            .section .grid>.field {
+                padding: 8px 5px
+            }
+
+            .field strong {
+                font-size: 10px
+            }
+
+            .results-list .card>p {
+                max-width: calc(100vw - 135px)
+            }
+
+            .roadhead .actions .btn {
+                padding: 7px 8px
+            }
+
+            .shell {
+                padding-inline: 12px !important
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important
+            }
+        }
+
+        .recommended-shelf {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            border: 1px solid var(--b);
+            border-right: 0;
+            border-bottom: 0
+        }
+
+        .recommended-shelf>.card {
+            flex: 0 0 280px;
+            border: 0;
+            border-right: 1px solid var(--b);
+            border-bottom: 1px solid var(--b)
+        }
+
+        @media(max-width:1023px) {
+            .recommended-shelf {
+                display: block;
+                border: 1px solid var(--b)
+            }
+
+            .recommended-shelf>.card {
+                min-height: 64px;
+                border: 0;
+                border-bottom: 1px solid var(--b);
+                display: grid;
+                grid-template-columns: 40px 1fr 60px;
+                align-items: center;
+                gap: 10px
+            }
+
+            .recommended-shelf>.card .top {
+                display: contents
+            }
+
+            .recommended-shelf>.card .ico {
+                grid-row: 1/3
+            }
+
+            .recommended-shelf>.card h3 {
+                grid-column: 2;
+                grid-row: 1;
+                margin: 0
+            }
+
+            .recommended-shelf>.card>p {
+                grid-column: 2;
+                grid-row: 2;
+                white-space: nowrap
+            }
+
+            .recommended-shelf>.card .meta,
+            .recommended-shelf>.card .actions {
+                display: none
+            }
+
+            .recommended-shelf>.card .pill {
+                grid-column: 3;
+                grid-row: 1
+            }
+
+            .recommended-shelf>.card .bookmark {
+                grid-column: 3;
+                grid-row: 2
+            }
+        }
+
+        @media(max-width:1023px) {
+            .modal-backdrop {
+                align-items: flex-end;
+                justify-content: center
+            }
+
+            .modal-backdrop .drawer {
+                width: 100%;
+                max-height: 88dvh;
+                border-radius: 0 !important;
+                border-top: 1px solid var(--strong);
+                padding-bottom: calc(20px + env(safe-area-inset-bottom))
+            }
+        }
+
+        .activity-list {
+            border: 1px solid var(--b);
+            background: var(--s)
+        }
+
+        .activity-row {
+            min-height: 42px;
+            border-bottom: 1px solid var(--b);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 7px 12px;
+            font-size: 12px
+        }
+
+        .activity-row:last-child {
+            border-bottom: 0
+        }
+
+        .activity-row time {
+            margin-left: auto;
+            color: var(--faint);
+            font-variant-numeric: tabular-nums
+        }
+
+        .activity-mark {
+            width: 7px;
+            height: 7px;
+            background: var(--a);
+            border: 1px solid var(--a);
+            flex: none
+        }
+
+        /* Final mobile layout corrections */
+        @media(max-width:1023px) {
+
+            html,
+            body {
+                max-width: 100%;
+                overflow-x: hidden
+            }
+
+            body {
+                overscroll-behavior-x: none
+            }
+
+            .workspace {
+                width: 100%;
+                min-width: 0
+            }
+
+            .mobile-top {
+                height: calc(56px + env(safe-area-inset-top));
+                min-height: 56px;
+                justify-content: center;
+                padding-left: 56px;
+                padding-right: 56px
+            }
+
+            .mobile-top h1 {
+                max-width: 100%;
+                font-size: 16px;
+                line-height: 20px
+            }
+
+            .mobile-top button {
+                top: calc(env(safe-area-inset-top) + 4px);
+                width: 44px;
+                height: 44px
+            }
+
+            .mobile-top .mobile-back {
+                left: 8px
+            }
+
+            .mobile-top .mobile-search {
+                right: 8px
+            }
+
+            .bottom-tabs {
+                height: calc(64px + env(safe-area-inset-bottom));
+                min-height: 64px;
+                padding: 0 2px env(safe-area-inset-bottom);
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: 0
+            }
+
+            .bottom-tabs button {
+                width: 100%;
+                min-width: 0;
+                min-height: 60px;
+                padding: 4px 0;
+                font-size: 0
+            }
+
+            .bottom-tabs button+button {
+                border-left: 1px solid var(--b)
+            }
+
+            .bottom-tabs button svg {
+                width: 22px;
+                height: 22px
+            }
+
+            .bottom-tabs button small {
+                font-size: 10px;
+                line-height: 14px
+            }
+
+            .bottom-tabs button.active:after {
+                top: 0;
+                height: 2px
+            }
+
+            .bottom-tabs button.active:before {
+                display: none
+            }
+
+            .bottom-tabs button.has-saved #savedDot {
+                top: 6px;
+                right: calc(50% - 15px)
+            }
+
+            #app>.shell {
+                width: 100%;
+                max-width: 720px;
+                padding: 0 16px !important;
+                margin: 0 auto
+            }
+
+            .hero {
+                padding: 20px 0 12px
+            }
+
+            .hero h1 {
+                font-size: 28px;
+                line-height: 34px;
+                margin: 0 0 14px
+            }
+
+            .hero .search {
+                display: block;
+                width: 100%;
+                max-width: none
+            }
+
+            .hero .search input {
+                width: 100%;
+                min-width: 0;
+                height: 48px;
+                padding: 0 12px 0 42px;
+                font-size: 14px
+            }
+
+            .hero .search .glass {
+                left: 12px;
+                top: 13px;
+                width: 20px;
+                height: 20px
+            }
+
+            .section {
+                padding: 16px 0
+            }
+
+            .sh {
+                align-items: center;
+                margin-bottom: 9px
+            }
+
+            .sh h2,
+            .title {
+                font-size: 20px;
+                line-height: 26px
+            }
+
+            .section .grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                width: 100%;
+                min-width: 0
+            }
+
+            .section .grid>.field {
+                min-width: 0;
+                min-height: 104px;
+                padding: 10px 5px;
+                overflow: hidden
+            }
+
+            .field-icon {
+                width: 40px;
+                height: 40px;
+                margin: 0 auto 7px
+            }
+
+            .field strong {
+                display: block;
+                font-size: 10px;
+                line-height: 13px;
+                overflow-wrap: anywhere
+            }
+
+            .field small {
+                display: none
+            }
+
+            .recommended-shelf {
+                width: 100%;
+                min-width: 0
+            }
+
+            .recommended-shelf>.card {
+                min-height: 72px;
+                grid-template-columns: 40px minmax(0, 1fr) 48px;
+                padding: 8px;
+                gap: 8px
+            }
+
+            .recommended-shelf>.card h3 {
+                font-size: 13px;
+                line-height: 18px;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap
+            }
+
+            .recommended-shelf>.card>p {
+                font-size: 11px;
+                line-height: 15px;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis
+            }
+
+            .recommended-shelf>.card .ico {
+                width: 36px;
+                height: 36px
+            }
+
+            .recommended-shelf>.card .pill {
+                font-size: 9px;
+                padding: 2px 4px;
+                max-width: 48px;
+                overflow: hidden
+            }
+
+            .recommended-shelf>.card .bookmark {
+                width: 32px;
+                height: 32px;
+                display: grid;
+                place-items: center
+            }
+
+            .recent-list,
+            .activity-list {
+                width: 100%;
+                min-width: 0
+            }
+
+            .page {
+                padding: 15px 0 28px
+            }
+
+            .roadhead {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 8px;
+                padding: 4px 0 10px;
+                min-width: 0
+            }
+
+            .roadhead>div:first-child {
+                min-width: 0
+            }
+
+            .roadhead h1 {
+                font-size: 24px;
+                line-height: 30px;
+                margin: 5px 0 3px;
+                overflow-wrap: anywhere
+            }
+
+            .roadhead p {
+                font-size: 13px;
+                line-height: 18px;
+                max-width: 100%;
+                margin: 0;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden
+            }
+
+            .roadhead .actions.right {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 6px;
+                overflow-x: auto;
+                max-width: 100%;
+                padding: 2px 0 5px;
+                scrollbar-width: none
+            }
+
+            .roadhead .actions.right::-webkit-scrollbar {
+                display: none
+            }
+
+            .roadhead .actions .btn:not(.primary) {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                white-space: nowrap;
+                min-height: 40px;
+                flex: 0 0 auto;
+                font-size: 12px;
+                padding: 7px 10px
+            }
+
+            .roadhead .actions .btn.primary {
+                flex: 1 0 130px;
+                white-space: nowrap;
+                min-height: 42px
+            }
+
+            .summary {
+                position: static;
+                z-index: auto;
+                margin: 5px 0 10px;
+                padding: 10px 11px;
+                display: grid;
+                grid-template-columns: auto minmax(45px, 1fr);
+                gap: 5px 10px;
+                font-size: 12px
+            }
+
+            .summary .line {
+                grid-column: 1/-1;
+                grid-row: 2;
+                width: 100%;
+                margin: 0
+            }
+
+            .summary span {
+                grid-column: 1;
+                grid-row: 3;
+                font-size: 11px
+            }
+
+            .summary small {
+                grid-column: 2;
+                grid-row: 3;
+                text-align: right;
+                font-size: 10px
+            }
+
+            .tabs {
+                position: sticky;
+                top: calc(56px + env(safe-area-inset-top));
+                z-index: 24;
+                margin: 0 -16px 10px;
+                padding: 0 10px;
+                overflow-x: auto;
+                scrollbar-width: none;
+                border-bottom: 1px solid var(--b)
+            }
+
+            .tabs::-webkit-scrollbar {
+                display: none
+            }
+
+            .tab {
+                min-height: 44px;
+                padding: 10px 12px;
+                font-size: 12px
+            }
+
+            .layout {
+                display: block;
+                width: 100%;
+                min-width: 0
+            }
+
+            .stage-nav,
+            .layout>.side {
+                display: none
+            }
+
+            .road-tools {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: 7px;
+                margin: 0 0 10px
+            }
+
+            .road-tools input {
+                grid-column: 1/-1;
+                width: 100%;
+                min-width: 0;
+                height: 42px
+            }
+
+            .road-tools select {
+                height: 40px;
+                min-width: 0;
+                width: 100%;
+                font-size: 12px
+            }
+
+            .road-tools .btn {
+                min-height: 40px;
+                font-size: 11px;
+                padding: 6px 8px
+            }
+
+            .road-tools #collapse,
+            .road-tools #expand {
+                display: none
+            }
+
+            .stage {
+                width: 100%;
+                min-width: 0;
+                margin: 0 0 8px;
+                border: 1px solid var(--b);
+                border-left: 2px solid var(--a)
+            }
+
+            .stagehead {
+                display: grid;
+                grid-template-columns: 28px minmax(0, 1fr) auto 32px;
+                gap: 7px;
+                min-height: 56px;
+                padding: 8px 9px
+            }
+
+            .stagehead>div {
+                min-width: 0
+            }
+
+            .stagehead>div>b {
+                display: block;
+                font-size: 13px;
+                line-height: 17px;
+                overflow: hidden;
+                text-overflow: ellipsis
+            }
+
+            .stagehead small {
+                display: none
+            }
+
+            .stagehead .num {
+                font-size: 12px;
+                opacity: 1
+            }
+
+            .stagehead .meter {
+                margin: 0;
+                font-size: 10px;
+                white-space: nowrap
+            }
+
+            .stagehead button {
+                width: 32px;
+                height: 36px;
+                font-size: 18px
+            }
+
+            .topics {
+                padding: 0 8px
+            }
+
+            .topic {
+                grid-template-columns: 24px minmax(0, 1fr) auto;
+                gap: 7px;
+                min-height: 58px;
+                padding: 7px 0;
+                align-items: center
+            }
+
+            .topic input {
+                width: 20px;
+                height: 20px;
+                margin: 0
+            }
+
+            .topic>div {
+                min-width: 0
+            }
+
+            .topic b {
+                display: block;
+                font-size: 13px;
+                line-height: 18px;
+                overflow-wrap: anywhere
+            }
+
+            .topic small {
+                font-size: 11px;
+                line-height: 15px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden
+            }
+
+            .topic aside {
+                gap: 0
+            }
+
+            .topic aside .pill {
+                display: none
+            }
+
+            .topic aside button {
+                width: 36px;
+                height: 40px;
+                min-width: 36px;
+                min-height: 40px;
+                padding: 6px
+            }
+
+            .topic aside button svg {
+                width: 16px;
+                height: 16px
+            }
+
+            .panel {
+                width: 100%;
+                min-width: 0;
+                padding: 12px
+            }
+
+            .continuegrid {
+                width: 100%;
+                max-width: 100%
+            }
+
+            .filters {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 6px
+            }
+
+            .filters>.search {
+                grid-column: 1/-1;
+                min-width: 0;
+                width: 100%;
+                max-width: none
+            }
+
+            .filters input {
+                width: 100%;
+                min-width: 0
+            }
+
+            .filters select {
+                width: 100%;
+                min-width: 0;
+                font-size: 11px;
+                padding-left: 7px;
+                padding-right: 18px
+            }
+
+            .chips {
+                max-width: calc(100vw - 32px)
+            }
+
+            .catalog-layout {
+                display: block
+            }
+
+            .results-list {
+                width: 100%;
+                min-width: 0
+            }
+
+            .results-list .card {
+                width: 100%;
+                min-width: 0;
+                grid-template-columns: 38px minmax(0, 1fr) 42px;
+                gap: 7px;
+                padding: 8px;
+                min-height: 68px
+            }
+
+            .results-list .card .ico {
+                width: 36px;
+                height: 36px
+            }
+
+            .results-list .card h3 {
+                min-width: 0;
+                font-size: 13px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap
+            }
+
+            .results-list .card>p {
+                min-width: 0;
+                max-width: 100%;
+                font-size: 11px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap
+            }
+
+            .results-list .card .pill {
+                max-width: 42px;
+                overflow: hidden;
+                white-space: nowrap;
+                font-size: 9px;
+                padding: 2px 3px
+            }
+
+            .results-list .card .bookmark {
+                width: 34px;
+                height: 34px
+            }
+
+            .results-list .card .actions {
+                display: none
+            }
+
+            .project-item,
+            .panel.project-item {
+                grid-column: 1/-1
+            }
+
+            .drawer {
+                width: 100%;
+                max-width: 100vw;
+                max-height: 88dvh;
+                padding: 18px 16px calc(16px + env(safe-area-inset-bottom));
+                overflow: auto;
+                overscroll-behavior: contain
+            }
+
+            .modal-backdrop {
+                align-items: flex-end;
+                justify-content: center;
+                padding: 0
+            }
+
+            .modal-backdrop .drawer {
+                width: 100%;
+                max-width: 100vw;
+                max-height: 88dvh;
+                padding: 18px 16px calc(18px + env(safe-area-inset-bottom))
+            }
+
+            .palette-back.mobile-palette {
+                inset: 0;
+                padding: calc(env(safe-area-inset-top) + 8px) 0 0;
+                align-items: stretch;
+                background: var(--bg)
+            }
+
+            .mobile-palette .palette {
+                width: 100%;
+                height: 100%;
+                max-height: none;
+                border: 0;
+                border-top: 1px solid var(--b);
+                display: flex;
+                flex-direction: column
+            }
+
+            .mobile-palette .palette input {
+                flex: none;
+                padding: 14px 16px
+            }
+
+            .mobile-palette .palette-results {
+                max-height: none;
+                flex: 1;
+                padding: 8px 12px
+            }
+
+            .palette-results button {
+                min-height: 58px;
+                border-bottom: 1px solid var(--b);
+                padding: 8px
+            }
+
+            .palette-results button>span {
+                min-width: 0
+            }
+
+            .palette-results button small {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 68vw
+            }
+
+            .toast {
+                left: 50%;
+                bottom: calc(72px + env(safe-area-inset-bottom));
+                max-width: calc(100vw - 32px);
+                white-space: nowrap
+            }
+
+            .more-sheet {
+                inset: auto 0 0 !important;
+                width: 100%;
+                max-width: 100vw;
+                padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+                max-height: 85dvh
+            }
+
+            .more-sheet h2 {
+                font-size: 20px
+            }
+
+            .more-sheet button {
+                min-height: 48px;
+                padding: 12px 4px
+            }
+
+            .explore-options {
+                grid-template-columns: 1fr
+            }
+
+            .empty {
+                padding: 24px 16px
+            }
+
+            .comparison,
+            .tablewrap {
+                max-width: calc(100vw - 32px);
+                overflow: auto
+            }
+
+            .footer {
+                display: none !important
+            }
+        }
+
+        @media(max-width:380px) {
+            #app>.shell {
+                padding-inline: 12px !important
+            }
+
+            .tabs {
+                margin-left: -12px;
+                margin-right: -12px;
+                padding-left: 6px;
+                padding-right: 6px
+            }
+
+            .summary {
+                margin-left: 0;
+                margin-right: 0
+            }
+
+            .topic {
+                grid-template-columns: 22px minmax(0, 1fr) 34px
+            }
+
+            .topic aside button {
+                width: 32px;
+                min-width: 32px
+            }
+
+            .roadhead .actions.right {
+                gap: 4px
+            }
+
+            .roadhead .actions .btn {
+                padding: 6px 8px
+            }
+
+            .roadhead .actions .btn.primary {
+                flex-basis: 112px
+            }
+
+            .section .grid>.field {
+                min-height: 96px
+            }
+
+            .field-icon {
+                width: 36px;
+                height: 36px
+            }
+
+            .field-icon svg {
+                width: 20px;
+                height: 20px
+            }
+        }
+
+        @media(max-width:1023px) {
+            .topic {
+                grid-template-columns: 22px minmax(0, 1fr) 88px
+            }
+
+            .topic aside {
+                width: 88px
+            }
+
+            .topic aside button {
+                width: 44px;
+                min-width: 44px;
+                min-height: 44px;
+                height: 44px
+            }
+
+            .stagehead button {
+                width: 40px;
+                height: 40px;
+                min-height: 40px
+            }
+
+            .filters .chip,
+            .chips .chip {
+                min-height: 40px
+            }
+
+            .close {
+                width: 40px;
+                height: 40px
+            }
+
+            .road-tools select,
+            .road-tools .btn {
+                min-height: 44px
+            }
+
+            .roadhead .actions .btn {
+                min-height: 44px
+            }
+
+            .palette-results button {
+                min-height: 60px
+            }
+
+            .summary span,
+            .summary small {
+                min-width: 0
+            }
+        }
+
+        @media(max-width:380px) {
+            .topic {
+                grid-template-columns: 22px minmax(0, 1fr) 80px
+            }
+
+            .topic aside {
+                width: 80px
+            }
+
+            .topic aside button {
+                width: 40px;
+                min-width: 40px;
+                min-height: 44px
+            }
+
+            .roadhead .actions .btn {
+                padding: 6px 7px
+            }
+        }
+
+        .mobile-related {
+            display: none
+        }
+
+        @media(max-width:1023px) {
+            .mobile-related {
+                display: block;
+                padding: 12px 0 22px
+            }
+
+            .mobile-related h2 {
+                font-size: 16px;
+                margin: 0 0 8px
+            }
+
+            .mobile-related .recommended-shelf {
+                display: block
+            }
+        }
+
+        @media(max-width:1023px) {
+            .roadhead .actions .btn.primary {
+                order: -1
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="workspace-side" id="workspaceSide">
+        <div class="side-brand"><a href="#home" class="brand"><span class="mark"
+                    data-icon="nodes"></span><span><b>PathForge</b><small>Learning workspace</small></span></a><button
+                class="icon-btn" id="collapseSide" aria-label="Collapse sidebar">‹</button></div>
+        <div class="side-nav">
+            <div class="side-label">WORKSPACE</div><button data-go="home" data-side="home"><i
+                    data-icon="home"></i></button><button data-go="roadmaps" data-side="roadmaps"><i
+                    data-icon="explore"></i></button><button data-go="progress" data-side="progress"><i
+                    data-icon="progress"></i></button><button data-go="bookmarks" data-side="bookmarks"><i
+                    data-icon="bookmark"></i></button><button data-go="projects" data-side="projects"><i
+                    data-icon="projects"></i></button><button data-go="compare" data-side="compare"><i
+                    data-icon="compare"></i></button><button data-go="studyplans" data-side="studyplans"><i
+                    data-icon="calendar"></i></button><button id="findPath"><i data-icon="target"></i> Find my
+                path</button>
+            <div class="side-label field-label"><span>FIELDS</span><button id="fieldsToggle"
+                    aria-label="Collapse fields">−</button></div>
+            <div class="side-fields" id="sideFields"></div>
+        </div>
+        <div class="side-bottom"><button id="theme"><i data-icon="moon"></i> <span>Theme</span></button><button
+                id="settings"><i data-icon="settings"></i> <span>Settings</span></button><button id="sideReset"><i
+                    data-icon="reset"></i> <span>Reset local data</span></button></div>
+    </aside>
+    <div class="workspace">
+        <div class="utility">
+            <div class="utility-crumb" id="utilityCrumb">PathForge <span>›</span> Home</div><button
+                class="command-trigger" id="commandTrigger"><i data-icon="search"></i> <span>Search
+                    roadmaps…</span><kbd>/</kbd></button>
+            <div class="utility-actions"><button id="bookmarkCount" title="Bookmarks"><i data-icon="bookmark"></i>
+                    <span></span></button><button class="theme-mini" id="themeMini" aria-label="Toggle theme"><i
+                        data-icon="moon"></i></button></div>
+        </div>
+        <div class="settings-pop hidden" id="settingsPop"><button id="settingsReset">Reset all local data</button></div>
+        <div class="mobile-top"><button data-go="home" class="mobile-back hidden" id="mobileBack"><i
+                    data-icon="back"></i></button>
+            <h1 id="mobileTitle">PathForge</h1><button class="mobile-search" id="mobileSearch"><i
+                    data-icon="search"></i></button>
+        </div>
+        <main id="app"></main>
+        <nav class="bottom-tabs" id="bottomTabs"><button data-go="home" data-mtab="home"><i
+                    data-icon="home"></i><small>Home</small></button><button data-go="roadmaps" data-mtab="roadmaps"><i
+                    data-icon="explore"></i><small>Explore</small></button><button data-go="progress"
+                data-mtab="progress"><i data-icon="progress"></i><small>Progress</small></button><button
+                data-go="bookmarks" data-mtab="bookmarks"><i data-icon="bookmark"></i><small>Saved</small><i
+                    id="savedDot"></i></button><button id="moreButton"><i
+                    data-icon="more"></i><small>More</small></button></nav>
+        <footer class="footer">
+            <div class="shell footerrow">
+                <div><b>PathForge</b><br>Engineering & Technology Roadmaps<br>Built as an educational roadmap explorer.
+                </div>
+                <div><button class="link" data-go="roadmaps">Explore</button> · <button class="link"
+                        data-go="progress">Progress</button> · <button class="link"
+                        data-go="bookmarks">Bookmarks</button> · <button class="link" id="footerReset">Reset
+                        data</button></div>
+            </div>
+        </footer>
+        <div id="overlay"></div>
+        <div id="toast" class="toast hidden" role="status"></div>
+        <script>
+            'use strict'; const ICONS = { laptop: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M2 21h20M8 17l-1 4m9-4 1 4M8 9l2 2-2 2m5 0h3"/>', neural: '<path d="M9 4a3 3 0 0 0-5 2 3 3 0 0 0 0 6 3 3 0 0 0 5 4m6-12a3 3 0 0 1 5 2 3 3 0 0 1 0 6 3 3 0 0 1-5 4M9 4v16m6-16v16M9 8h6m-6 8h6M2 3v2m20-2v2M2 19v2m20-2v2"/>', shield: '<path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><circle cx="12" cy="11" r="2"/><path d="M12 13v3"/>', building: '<path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-5h6v5M8 11h2m4 0h2M3 9h4m10 0h4M12 4V2"/>', plug: '<path d="M8 2v6m8-6v6M5 8h14v3a7 7 0 0 1-7 7v4m0-11v4"/><path d="M3 8h18"/>', microchip: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 9h6v6H9zM9 2v4m6-4v4m-6 12v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4"/>', gear: '<circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.7 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.6-1.4-2.4L7.3 15a8 8 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.7-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.7 1l1.7-.6 1.4 2.4-1.4 1.1a8 8 0 0 1 0 2Z"/>', flask: '<path d="M9 3h6m-5 0v7l-5.7 9.2A1.8 1.8 0 0 0 5.8 22h12.4a1.8 1.8 0 0 0 1.5-2.8L14 10V3M7 17h10M9 13h6"/><circle cx="10" cy="16" r=".6"/><circle cx="14" cy="18" r=".6"/>', rocket: '<path d="M12 22c4-3 6-8 6-14V3l-6 2-6-2v5c0 6 2 11 6 14Z"/><path d="m8 11-4 2-1 5 6-3m7-4 4 2 1 5-6-3"/><circle cx="12" cy="9" r="2"/>', car: '<path d="m5 11 2-5h10l2 5 2 2v6h-2v-2H5v2H3v-6l2-2Zm1 0h12l-1.5-3h-9L6 11Z"/><circle cx="7" cy="15" r="1"/><circle cx="17" cy="15" r="1"/>', dna: '<path d="M7 3c0 8 10 10 10 18M17 3C17 11 7 13 7 21M8 6h8m-9 5h10m-10 5h10m-9 5h8"/><path d="M3 12h5m8 0h5"/>', compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/><path d="M12 2v2m10 8h-2M12 22v-2M2 12h2"/>', factory: '<path d="M3 21V9l6 3V8l6 4V6h5v15H3Z"/><path d="M6 17h2m3 0h2m3 0h2M16 3h3v3h-3z"/>', derrick: '<path d="M3 21h18M6 21l6-18 6 18M8 15h8M9 11h6M10 7h4M4 6h7m2 0h7M6 3v3m12-3v3"/><path d="M4 6v8m16-8v8M2 14h4m12 0h4"/>', atom: '<ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/><circle cx="12" cy="12" r="1.5"/>', gauge: '<path d="M4 17a8 8 0 1 1 16 0M12 13l4-4M6 17h12M3 21h18"/><path d="M12 4v2m7 3-1 1M5 9l1 1"/>', nodes: '<circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="m11 7-5 9m7-9 5 9M7 18h10"/><circle cx="12" cy="13" r="2"/>', target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="m9 12 2 2 5-5"/>', code: '<path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 14"/>', database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>', branch: '<circle cx="6" cy="4" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 6v12m0-9c0 5 12 5 12-1"/>', terminal: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3m6 0h4"/>', cloud: '<path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19 10a4 4 0 0 1 0 8H7Z"/>', container: '<path d="M3 7h18v13H3zM7 7V4h10v3M7 11v5m5-5v5m5-5v5"/>', layout: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11m-2-8h1m-1 3h1"/>', server: '<rect x="4" y="3" width="16" height="8" rx="2"/><rect x="4" y="13" width="16" height="8" rx="2"/><path d="M8 7h.01M8 17h.01M12 7h4m-4 10h4"/>', phone: '<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/>', game: '<path d="M7 9h10a5 5 0 0 1 4.8 6.4l-.6 2a2 2 0 0 1-3.2 1l-3-2.4h-6L6 18.4a2 2 0 0 1-3.2-1l-.6-2A5 5 0 0 1 7 9Z"/><path d="M7 12v4m-2-2h4m6-1h.01m3 2h.01"/>', chain: '<path d="M10 13a5 5 0 0 0 7.1 0l2-2A5 5 0 0 0 12 3.9l-1.1 1.1m3.1 6a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1"/>', chart: '<path d="M4 20V10h4v10m4 0V4h4v16m4 0v-7h-4"/>', bug: '<path d="M8 8 6 5m10 3 2-3M4 13h4m8 0h4M5 19l3-2m11 2-3-2M12 8v13M8 8h8v8a4 4 0 0 1-8 0V8Z"/>', key: '<circle cx="8" cy="15" r="5"/><path d="m12 12 9-9m-4 0 4 4m-7-1 3 3"/>', beam: '<path d="M3 19h18M5 19V6m14 13V6M5 8h14M8 8v11m8-11v11M5 13h14"/>', map: '<path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15m6-12v15"/>', road: '<path d="M8 22 11 2m5 20L13 2M12 5v3m0 4v3m0 4v2"/>', water: '<path d="M12 22a8 8 0 0 0 8-8c0-5-8-12-8-12S4 9 4 14a8 8 0 0 0 8 8Z"/><path d="M8 15a4 4 0 0 0 4 4"/>', panel: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16m8-16v16M3 9h18m-18 6h18"/>', sunpanel: '<circle cx="12" cy="8" r="3"/><path d="M12 1v2m0 10v2m7-7h-2M7 8H5m12-5-1 2M8 11l-1 2m12-2 1 2M7 3l1 2M5 17h14l2 4H3l2-4Z"/>', turbine: '<path d="M12 11V3m0 8 7-4M12 11l-7-4m7 4-2 8m2-8 7 5m-7-5-7 5m7-5v10m-3 0h6"/>', battery: '<rect x="4" y="7" width="16" height="14" rx="2"/><path d="M9 7V4h6v3m-3 3-2 4h3l-1 3 4-5h-3l1-2"/>', circuit: '<rect x="7" y="7" width="10" height="10" rx="1"/><path d="M9 2v5m6-5v5m-6 10v5m6-5v5M2 9h5m-5 6h5m10-6h5m-5 6h5M10 10h4v4h-4z"/>', antenna: '<path d="M12 13v9m-4 0h8M9 13l3-4 3 4M7 8a7 7 0 0 1 10 0m-13-3a11 11 0 0 1 16 0"/><circle cx="12" cy="7" r="1"/>', pcb: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M12 10V6h5m-7 8H6v3m5-5 4 4h3"/>', cube: '<path d="m12 3 9 5-9 5-9-5 9-5Zm-9 5v9l9 5 9-5V8m-9 5v9"/>', machine: '<path d="M3 20h18M5 20V8h6v4h4V8h4v12M4 5h8m-4-3v6m7 6h2m-2 3h2"/>', fan: '<circle cx="12" cy="12" r="2"/><path d="M12 10c-1-5 2-8 5-6 2 2-1 5-4 7m-3 1c-4 3-8 2-8-1 0-3 4-3 8-1m4 1c4 2 5 6 2 8-2 1-4-3-4-7"/>', robot: '<rect x="5" y="8" width="14" height="12" rx="2"/><path d="M12 4v4m-3 5h.01m6 0h.01M9 16h6M2 12h3m14 0h3M8 20v2m8-2v2"/>', drone: '<path d="m12 12-5-5m5 5 5-5m-5 5-5 5m5-5 5 5"/><rect x="9" y="9" width="6" height="6" rx="2"/><circle cx="5" cy="5" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/>', satellite: '<path d="m12 12 7-7m-9 4-4-4m7 10 4 4M5 5l4-2 2 2-2 4-4-4Zm10 10 4-2 2 2-2 4-4-4Zm-5-3 4-4 4 4-4 4-4-4Z"/>', scan: '<path d="M4 8V4h4m8 0h4v4m0 8v4h-4m-8 0H4v-4M7 12h10m-7-3v6m4-6v6"/>', printer: '<path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6zm12-2h.01"/>', home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V10Z"/>', explore: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/>', progress: '<path d="M4 19a9 9 0 1 1 16 0"/><path d="m12 13 4-4m-8 10h8"/>', bookmark: '<path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18l-6-4-6 4V4Z"/>', bookmarkFill: '<path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18l-6-4-6 4V4Z" fill="currentColor"/>', search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>', menu: '<path d="M4 6h16M4 12h16M4 18h16"/>', close: '<path d="m6 6 12 12M18 6 6 18"/>', chevron: '<path d="m9 18 6-6-6-6"/>', check: '<path d="m5 12 4 4L19 6"/>', circle: '<circle cx="12" cy="12" r="8"/>', clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', moon: '<path d="M20 15A8 8 0 0 1 9 4a8 8 0 1 0 11 11Z"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m17-7-1.5 1.5M6.5 17.5 5 19m14 0-1.5-1.5M6.5 6.5 5 5"/>', share: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m9 11 6-5m-6 8 6 4"/>', print: '<path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/>', reset: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5m4-1v5l3 2"/>', filter: '<path d="M4 5h16l-6 7v6l-4 2v-8L4 5Z"/>', sort: '<path d="M8 5v14m-4-4 4 4 4-4m4-10h4m-4 5h3m-3 5h2"/>', calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18m-13 4h.01m4 0h.01m4 0h.01"/>', plus: '<path d="M12 5v14m-7-7h14"/>', back: '<path d="m15 18-6-6 6-6M9 12h12"/>', trash: '<path d="M4 7h16m-10 4v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3"/>', settings: '<circle cx="12" cy="12" r="3"/><path d="m19 13 2 1-2 4-2-1-2 1v2h-5v-2l-2-1-2 1-2-4 2-1v-2l-2-1 2-4 2 1 2-1V4h5v2l2 1 2-1 2 4-2 1v2Z"/>', flag: '<path d="M5 22V4m0 1c6-4 9 4 15 0v10c-6 4-9-4-15 0"/>', layers: '<path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5m-18 5 9 5 9-5"/>', more: '<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>', compare: '<path d="M4 5h16M4 12h16M4 19h16M8 3v4m8 3v4m-8 3v4"/>', projects: '<path d="M4 7h16v14H4zM9 7V4h6v3M8 12h8m-8 4h5"/>' };
+            function svgIcon(name, size = 20) { let body = ICONS[name] || ICONS.nodes; return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">${body}</svg>` }
+            const CATEGORY_ICONS = { 'Computer Science & IT': 'laptop', 'AI & Data': 'neural', 'Cybersecurity & Networks': 'shield', 'Civil Engineering': 'building', 'Electrical Engineering': 'plug', 'Electronics & Communication': 'microchip', 'Mechanical Engineering': 'gear', 'Chemical Engineering': 'flask', 'Aerospace & Aeronautical': 'rocket', 'Automobile Engineering': 'car', 'Biomedical & Biotechnology': 'dna', 'Architecture & Planning': 'compass', 'Industrial & Production': 'factory', 'Petroleum & Mining': 'derrick', 'Materials & Metallurgy': 'atom', 'Instrumentation & Control': 'gauge', 'Interdisciplinary Engineering': 'nodes', 'Placement & Competitive Exams': 'target' };
+            function getRoadmapIcon(r) { const x = (r.title || '').toLowerCase(); const rules = [[/python|java|javascript|typescript|programming|c\+\+|c programming/, 'code'], [/database|sql|dbms/, 'database'], [/git|github/, 'branch'], [/linux|bash|shell/, 'terminal'], [/cloud|aws|azure|google cloud/, 'cloud'], [/docker|kubernetes|container/, 'container'], [/frontend|ui development|product design/, 'layout'], [/backend|api|graphql/, 'server'], [/android|ios|mobile|flutter/, 'phone'], [/game/, 'game'], [/blockchain|web3/, 'chain'], [/machine learning|deep learning|neural|ai engineer|artificial intelligence/, 'neural'], [/data visualization|business intelligence|power bi|tableau|data analyst/, 'chart'], [/hacking|penetration|security|soc|malware/, 'shield'], [/cryptography/, 'key'], [/structural|rcc|steel structure|bridge/, 'beam'], [/petroleum|reservoir|drilling|mining|mine planning|oil & gas/, 'derrick'], [/materials|metallurg|welding|corrosion|nanotechnology/, 'atom'], [/industrial|production engineering|manufacturing|quality engineering/, 'factory'], [/survey|gis|mapping/, 'map'], [/transportation|highway/, 'road'], [/water|hydraulics|hydrology/, 'water'], [/plc|scada|automation|control/, 'gauge'], [/power systems|power generation|transmission|smart grid/, 'plug'], [/solar/, 'sunpanel'], [/wind energy/, 'turbine'], [/electric vehicle|battery|ev /, 'battery'], [/embedded|arduino|esp32|microcontroller|arm/, 'circuit'], [/vlsi|fpga|verilog|semiconductor|asic/, 'microchip'], [/antenna|rf engineering|wireless/, 'antenna'], [/pcb/, 'pcb'], [/cad|cam|solidworks|catia|creo|autocad/, 'cube'], [/cnc/, 'machine'], [/ansys|fea|cfd/, 'cube'], [/hvac|refrigeration/, 'fan'], [/robotics|mechatronics/, 'robot'], [/drone|uav/, 'drone'], [/rocket|spacecraft|satellite|orbital|aerospace/, 'satellite'], [/medical imaging/, 'scan'], [/3d printing|additive manufacturing/, 'printer'], [/gate|exam|aptitude|reasoning|interview/, 'target']]; for (const [re, n] of rules) if (re.test(x)) return n; return CATEGORY_ICONS[r.category] || 'nodes' }
+            const catalog = [
+                ['Computer Science & IT', 'Computer Science Fundamentals|Programming Fundamentals|C Programming|C++|Java|Python|JavaScript|TypeScript|Data Structures & Algorithms|Object-Oriented Programming|DBMS|SQL|Operating Systems|Computer Networks|Software Engineering|Git & GitHub|Linux|Shell / Bash|Frontend Developer|Backend Developer|Full Stack Developer|Web Developer|Android Developer|iOS Developer|React|Node.js|Spring Boot|Django|Flutter|React Native|PHP|.NET / ASP.NET|REST API Development|API Design|GraphQL|System Design|Software Architecture|Microservices|Distributed Systems|Cloud Computing|AWS|Azure|Google Cloud|DevOps|DevSecOps|Docker|Kubernetes|Terraform|CI/CD|Site Reliability Engineering|QA / Software Testing|Test Automation|Game Development|Blockchain Development|Web3 Fundamentals|WordPress Development|UI Development|UX Design|Product Design|Technical Writing|Product Management|Engineering Management'],
+                ['AI & Data', 'Artificial Intelligence Fundamentals|AI Engineer|Data Analyst|Business Intelligence Analyst|Data Scientist|Machine Learning Engineer|Machine Learning|Deep Learning|Neural Networks|Generative AI|Large Language Models|Prompt Engineering|AI Agents|Retrieval Augmented Generation|NLP|Computer Vision|Reinforcement Learning|MLOps|Data Engineering|Big Data Engineering|Apache Spark|Data Visualization|Power BI|Tableau|Statistics for Data Science|Mathematics for Machine Learning|Python for Data Analysis'],
+                ['Cybersecurity & Networks', 'Cybersecurity Fundamentals|Cybersecurity Engineer|Ethical Hacking|Penetration Testing|Network Security|Network Engineer|SOC Analyst|Security Analyst|Cloud Security|Application Security|Web Security|API Security|Digital Forensics|Incident Response|Malware Analysis|Cryptography|DevSecOps|Security Operations|Identity & Access Management'],
+                ['Civil Engineering', 'Civil Engineering Fundamentals|Structural Engineering|Construction Engineering|Construction Project Management|Geotechnical Engineering|Transportation Engineering|Highway Engineering|Environmental Engineering|Water Resources Engineering|Hydraulics|Surveying|GIS for Civil Engineering|Quantity Surveying|Estimation & Costing|Building Planning|Reinforced Concrete Design|Steel Structure Design|Bridge Engineering|Earthquake Engineering|BIM|AutoCAD for Civil Engineering|Revit for Civil Engineering|STAAD.Pro|ETABS|Primavera P6|Urban & Regional Planning'],
+                ['Electrical Engineering', 'Electrical Engineering Fundamentals|Basic Electrical Engineering|Circuit Analysis|Electrical Machines|Power Systems|Power Generation|Transmission & Distribution|Power Electronics|Control Systems|Electrical Measurements|Electrical Protection|High Voltage Engineering|Renewable Energy|Solar Engineering|Wind Energy|Smart Grid|Electric Vehicles|EV Powertrain|Battery Technology|Industrial Electrical Systems|PLC|SCADA|Industrial Automation|Electrical Design Engineer|MATLAB for Electrical Engineering'],
+                ['Electronics & Communication', 'Electronics Engineering Fundamentals|Analog Electronics|Digital Electronics|Electronic Devices|Communication Systems|Digital Communication|Wireless Communication|Signal Processing|Digital Signal Processing|Embedded Systems|Embedded C|Microcontrollers|Arduino|ESP32|ARM|IoT Engineering|VLSI|ASIC Design|FPGA|Verilog|SystemVerilog|Semiconductor Engineering|PCB Design|RF Engineering|Antenna Engineering|Robotics Electronics'],
+                ['Mechanical Engineering', 'Mechanical Engineering Fundamentals|Engineering Mechanics|Strength of Materials|Theory of Machines|Machine Design|Thermodynamics|Heat Transfer|Fluid Mechanics|Manufacturing Engineering|Production Engineering|CAD|CAM|CNC|AutoCAD Mechanical|SolidWorks|CATIA|Creo|ANSYS|FEA|CFD|HVAC|Refrigeration & Air Conditioning|Mechatronics|Robotics|Industrial Engineering|Quality Engineering|Maintenance Engineering'],
+                ['Automobile Engineering', 'Automobile Engineering Fundamentals|Automotive Design|Internal Combustion Engines|Vehicle Dynamics|Automotive Electronics|Automotive Embedded Systems|Electric Vehicles|Hybrid Vehicles|Battery Management Systems|Autonomous Vehicles|ADAS|Automotive Manufacturing|Automotive Testing'],
+                ['Chemical Engineering', 'Chemical Engineering Fundamentals|Chemical Process Engineering|Chemical Thermodynamics|Fluid & Particle Mechanics|Heat Transfer|Mass Transfer|Reaction Engineering|Process Equipment Design|Process Control|Process Simulation|Aspen Plus|Petroleum Refining|Petrochemical Engineering|Industrial Safety|Process Safety|Environmental Chemical Engineering'],
+                ['Aerospace & Aeronautical', 'Aerospace Engineering Fundamentals|Aeronautical Engineering|Aerodynamics|Aircraft Structures|Aircraft Propulsion|Flight Mechanics|Flight Dynamics|Aircraft Design|Avionics|UAV / Drone Engineering|Rocket Propulsion|Spacecraft Engineering|Orbital Mechanics|Satellite Engineering|Computational Aerospace Engineering'],
+                ['Biomedical & Biotechnology', 'Biomedical Engineering|Medical Instrumentation|Biomedical Signal Processing|Medical Imaging|Biomechanics|Biomaterials|Biotechnology Fundamentals|Molecular Biology for Engineers|Bioinformatics|Genetic Engineering|Bioprocess Engineering'],
+                ['Architecture & Planning', 'Architecture Fundamentals|Architectural Design|Building Construction|Building Services|Sustainable Architecture|Interior Design Fundamentals|Urban Planning|Landscape Architecture|AutoCAD Architecture|Revit Architecture|BIM for Architecture|SketchUp|Architectural Visualization'],
+                ['Instrumentation & Control', 'Instrumentation Engineering|Sensors & Transducers|Process Instrumentation|Control Engineering|Industrial Instrumentation|PLC Programming|SCADA|DCS|Industrial Automation|Robotics & Automation|Industrial IoT'],
+                ['Petroleum, Mining & Materials', 'Petroleum Engineering|Reservoir Engineering|Drilling Engineering|Production Engineering|Oil & Gas Processing|Mining Engineering|Mine Planning|Mineral Processing|Metallurgical Engineering|Materials Science|Manufacturing Materials|Welding Engineering|Corrosion Engineering|Nanotechnology Fundamentals'],
+                ['Interdisciplinary Engineering', 'Robotics Engineering|Mechatronics Engineering|Renewable Energy Engineering|Energy Engineering|Environmental Engineering|Industrial Engineering|Systems Engineering|Engineering Management|Supply Chain Engineering|GIS|Drone Technology|3D Printing / Additive Manufacturing|Smart Manufacturing|Industry 4.0|Internet of Things|Digital Twin|Automation Engineering'],
+                ['Placement & Competitive Exams', 'Campus Placement Preparation|Quantitative Aptitude|Logical Reasoning|Verbal Ability|Technical Interview Preparation|HR Interview Preparation|Coding Assessment Preparation|DSA Interview Preparation|System Design Interview Preparation|GATE CSE|GATE Civil|GATE Electrical|GATE ECE|GATE Mechanical|GATE Chemical|Engineering Mathematics|Engineering Aptitude']
+            ];
+            const fields = [['Computer Science & IT', 'laptop'], ['AI & Data', 'neural'], ['Cybersecurity & Networks', 'shield'], ['Civil Engineering', 'building'], ['Electrical Engineering', 'plug'], ['Electronics & Communication', 'microchip'], ['Mechanical Engineering', 'gear'], ['Chemical Engineering', 'flask'], ['Aerospace & Aeronautical', 'rocket'], ['Automobile Engineering', 'car'], ['Biomedical & Biotechnology', 'dna'], ['Architecture & Planning', 'compass'], ['Industrial & Production', 'factory'], ['Petroleum & Mining', 'derrick'], ['Materials & Metallurgy', 'atom'], ['Instrumentation & Control', 'gauge'], ['Interdisciplinary Engineering', 'nodes'], ['Placement & Competitive Exams', 'target']];
+            const curricula = {
+                software: [['Foundations', ['Computing model and runtime', 'Problem decomposition', 'Programming language syntax', 'Variables, types and operators']], ['Core Concepts', ['Control flow and reusable functions', 'Collections and data modeling', 'Error handling and debugging', 'Complexity and trade-offs']], ['Tools & Workflow', ['Editor, terminal and environment setup', 'Version control with Git', 'Testing and quality checks', 'Documentation and collaboration']], ['Applied Practice', ['Build a small end-to-end feature', 'Work with files, APIs or data', 'Security and accessibility basics', 'Review, refactor and measure']], ['Advanced Topics', ['Architecture and component boundaries', 'Concurrency, performance and scale', 'Reliability, observability and failure modes', 'Deployment and operational ownership']], ['Projects & Career', ['Portfolio project with clear scope', 'Test strategy and technical documentation', 'Code review and interview practice', 'Next specialization and continuing study']]],
+                civil: [['Engineering Foundations', ['Engineering mathematics and units', 'Statics, mechanics and equilibrium', 'Engineering drawing and spatial reading', 'Materials, geology and site context']], ['Analysis & Survey', ['Survey control, levelling and traverse', 'Total station, GNSS and field records', 'Loads, boundary conditions and assumptions', 'Data reduction, tolerances and checks']], ['Design Methods', ['Applicable codes and design basis', 'Load paths and limit states', 'Member sizing and constructability', 'Safety factors and independent checks']], ['Software & Delivery', ['CAD drafting and drawing standards', 'BIM model coordination and quantities', 'Analysis tools and model verification', 'BOQ, estimate and technical specifications']], ['Construction & Quality', ['Sequencing, methods and temporary works', 'Inspection, testing and quality records', 'Contracts, procurement and change control', 'Site safety, environment and risk']], ['Projects & Practice', ['Develop a coordinated design package', 'Prepare quantities, schedule and cost basis', 'Check calculations against hand methods', 'Present assumptions, drawings and lessons learned']]],
+                electrical: [['Electrical Foundations', ['Units, charge, voltage and current', 'DC/AC circuit laws and network theorems', 'Phasors, power and three-phase quantities', 'Electromagnetic fields and energy conversion']], ['Devices & Analysis', ['Diodes, transistors and switching behavior', 'Transformers and rotating machine principles', 'Circuit simulation and measurement practice', 'Protection concepts and safe isolation']], ['System Design', ['Load estimation and operating envelopes', 'Generation, networks and distribution layouts', 'Control loops and dynamic response', 'Power conversion, drives and harmonics']], ['Tools & Standards', ['Single-line diagrams and drawing conventions', 'MATLAB/Simulink or domain analysis tools', 'Applicable standards, ratings and datasheets', 'Test plans, calibration and traceable records']], ['Modern Applications', ['Renewables, storage and grid integration', 'Automation, PLC/SCADA and instrumentation', 'EV charging, powertrain and battery basics', 'Reliability, protection coordination and safety']], ['Projects & Career', ['Design and validate a practical system', 'Simulate normal and fault operating cases', 'Document calculations, diagrams and assumptions', 'Technical review, troubleshooting and interview practice']]],
+                electronics: [['Foundations', ['Voltage, current, power and circuit laws', 'Semiconductor behavior and device models', 'Boolean algebra, logic and number systems', 'Signals, sampling and frequency concepts']], ['Core Design', ['Analog stages, biasing and op-amp circuits', 'Combinational and sequential logic', 'Microcontroller architecture and peripherals', 'Communication links and interface protocols']], ['Build & Tooling', ['Schematic capture and PCB layout workflow', 'C/C++ firmware, build and debugging tools', 'HDL simulation, synthesis and timing reports', 'Oscilloscope, logic analyzer and lab safety']], ['Integration', ['Sensor conditioning and data acquisition', 'Buses, interrupts and real-time constraints', 'Power integrity, EMC and board bring-up', 'Verification plans and hardware/software interfaces']], ['Advanced Topics', ['Low-power and robust embedded design', 'FPGA/ASIC flow and timing closure concepts', 'Signal processing or wireless link budgets', 'Reliability, security and production test']], ['Projects & Career', ['Prototype, test and iterate a working system', 'Produce schematics, firmware and test evidence', 'Debug with measurement rather than guesswork', 'Design review, portfolio and technical interview']]],
+                mechanical: [['Engineering Foundations', ['Units, vectors and engineering mathematics', 'Statics, dynamics and free-body diagrams', 'Material behavior and strength of components', 'Technical drawing, fits and tolerances']], ['Core Physics', ['Thermodynamic states and energy balances', 'Fluid properties, flow and pressure losses', 'Heat transfer modes and thermal resistance', 'Kinematics, mechanisms and machine elements']], ['Design & Manufacturing', ['Design loads, failure modes and safety factors', 'Material and process selection', 'Machining, forming, joining and process plans', 'CAD modeling, assemblies and drawings']], ['Analysis Tools', ['Hand calculations and design verification', 'FEA assumptions, mesh and boundary conditions', 'CFD setup, convergence and validation', 'Metrology, testing and uncertainty']], ['Systems & Optimization', ['Thermal systems, HVAC or power cycles', 'Controls, sensors and mechatronic integration', 'Reliability, maintenance and quality methods', 'Cost, sustainability and design for manufacture']], ['Projects & Career', ['Design and document a functional assembly', 'Validate with simulation and physical evidence', 'Create drawings, BOM and manufacturing plan', 'Portfolio review, standards and interview practice']]],
+                chemical: [['Engineering Foundations', ['Balances, units and process variables', 'Chemical thermodynamics and phase behavior', 'Fluid flow, pressure drop and pumping', 'Particle properties and mechanical operations']], ['Transport & Reaction', ['Heat transfer and exchanger duty', 'Mass transfer, stages and separation', 'Reaction kinetics and reactor selection', 'Process control variables and dynamics']], ['Process Design', ['Flowsheets, recycle and process integration', 'Equipment sizing and operating envelopes', 'Materials selection and corrosion allowance', 'Simulation setup and independent validation']], ['Safety & Environment', ['Hazard identification and process risk', 'Relief, safeguards and operating procedures', 'Emissions, waste and resource efficiency', 'Sampling, quality and analytical methods']], ['Plant Operations', ['Instrumentation, alarms and control loops', 'Startup, shutdown and troubleshooting', 'Maintenance, reliability and change management', 'Economics, utilities and production constraints']], ['Projects & Career', ['Develop a balanced process design case', 'Build a flowsheet and document assumptions', 'Review safety, environmental and cost impacts', 'Present design basis and technical decisions']]],
+                aero: [['Engineering Foundations', ['Vectors, calculus and dimensional analysis', 'Statics, dynamics and rigid body motion', 'Thermodynamics and compressible flow basics', 'Engineering materials and technical drawings']], ['Aerodynamics & Structures', ['Airfoil behavior, lift, drag and stability', 'Loads, stress paths and structural sizing', 'Fatigue, fracture and material allowables', 'Boundary conditions and structural testing']], ['Propulsion & Flight', ['Propulsion cycle and engine components', 'Flight mechanics, trim and performance', 'Control surfaces, stability and handling', 'Mission requirements and energy budgets']], ['Design & Analysis Tools', ['CAD geometry and configuration trade-offs', 'Numerical methods and mesh quality', 'Simulation validation against theory', 'Avionics interfaces and requirements traceability']], ['Systems & Verification', ['Subsystem integration and interface control', 'Safety, reliability and failure analysis', 'Ground test planning and instrumentation', 'Certification mindset and configuration control']], ['Projects & Career', ['Create a requirements-led vehicle concept', 'Analyze loads, performance and subsystem tradeoffs', 'Build a testable model or simulation', 'Present evidence, assumptions and design reviews']]],
+                bio: [['Foundations', ['Engineering mathematics and measurement units', 'Cell biology and molecular principles', 'Chemistry, materials and transport basics', 'Ethics, privacy and laboratory safety']], ['Signals & Systems', ['Sensors, transducers and calibration', 'Physiological signal origins and artifacts', 'Sampling, filtering and signal quality', 'Imaging formation and reconstruction concepts']], ['Design Methods', ['Biocompatibility and material selection', 'Human factors and clinical workflow context', 'Requirements, risk and verification planning', 'Data handling and reproducible analysis']], ['Tools & Practice', ['Laboratory methods and quality systems', 'Programming for analysis and visualization', 'Device modeling and experimental design', 'Standards, documentation and traceability']], ['Advanced Applications', ['Biomechanics, imaging or bioinformatics methods', 'Validation across populations and conditions', 'Manufacturing, scale-up and regulatory pathway', 'Failure analysis and lifecycle considerations']], ['Projects & Career', ['Develop a safe, scoped engineering prototype', 'Analyze data with clear methods and limitations', 'Document risk, testing and reproducibility', 'Communicate with technical and clinical audiences']]],
+                security: [['Foundations', ['Networking, operating systems and protocols', 'Identity, authentication and access control', 'Threat modeling and security vocabulary', 'Legal scope, consent and responsible conduct']], ['Core Defenses', ['Secure configuration and asset inventory', 'Web, API and application attack surfaces', 'Cryptography concepts and key handling', 'Logging, telemetry and detection fundamentals']], ['Tools & Labs', ['Command-line and packet analysis workflows', 'Vulnerability scanning in authorized labs only', 'Secure coding and dependency review', 'Evidence handling and reproducible notes']], ['Operations', ['Incident triage and escalation', 'Containment, recovery and communication', 'Cloud and identity security controls', 'Risk prioritization and remediation validation']], ['Advanced Practice', ['Architecture review and defense in depth', 'Detection engineering and adversary behavior', 'Forensics methods and chain of custody', 'Resilience exercises and lessons learned']], ['Projects & Career', ['Build a hardened lab or defensive dashboard', 'Write a scoped assessment with remediation steps', 'Practice tabletop incident scenarios', 'Prepare reports, ethics statement and interviews']]],
+                data: [['Foundations', ['Python and reproducible environments', 'Descriptive statistics and data quality', 'SQL, joins and relational modeling', 'Visualization and communicating uncertainty']], ['Core Methods', ['Sampling, bias and experiment design', 'Feature construction and leakage checks', 'Regression, classification and evaluation', 'Linear algebra and optimization intuition']], ['Tools & Pipelines', ['Versioned notebooks and modular code', 'Data ingestion, validation and transformations', 'Model or dashboard delivery patterns', 'Experiment tracking and reproducibility']], ['Applied Work', ['Translate a question into measurable outcomes', 'Establish baselines and compare alternatives', 'Interpret errors, segments and limitations', 'Communicate findings to decision makers']], ['Advanced Topics', ['Scale, latency, drift and monitoring', 'Causal reasoning and robust validation', 'Privacy, fairness and governance', 'Deployment, rollback and lifecycle ownership']], ['Projects & Career', ['Complete a domain-relevant analysis or model', 'Publish assumptions, methods and limitations', 'Create a reproducible end-to-end artifact', 'Review cases, metrics and interview concepts']]],
+                exam: [['Syllabus & Baseline', ['Map the official syllabus and exam pattern', 'Diagnostic test and error classification', 'Core formulas, definitions and notation', 'Weekly targets with spaced revision']], ['Concept Building', ['Work through fundamentals before shortcuts', 'Derive key results and connect topics', 'Create concise notes and formula sheets', 'Solve representative untimed problems']], ['Problem Solving', ['Use a deliberate solve-and-check routine', 'Apply approximation and elimination safely', 'Track accuracy, time and recurring errors', 'Practice mixed-topic retrieval']], ['Timed Practice', ['Sectional sets under realistic timing', 'Mock tests with error log review', 'Improve pacing without careless guessing', 'Revisit weak concepts using targeted sets']], ['Advanced Revision', ['Integrate multi-step and previous-year problems', 'Revise high-yield concepts at intervals', 'Simulate full exam conditions', 'Protect sleep, logistics and exam readiness']], ['Projects & Career', ['Build a final revision plan and progress record', 'Explain solutions and assumptions clearly', 'Practice interviews or applied technical tasks', 'Review outcomes and plan next learning steps']]],
+                inter: [['Systems Foundations', ['Engineering mathematics, units and physical principles', 'Requirements, stakeholders and system boundaries', 'Modeling inputs, outputs and interfaces', 'Safety, sustainability and lifecycle thinking']], ['Core Methods', ['Subsystem principles for the target domain', 'Sensors, data and control fundamentals', 'Trade-off analysis and decision methods', 'Verification, validation and uncertainty']], ['Tools & Workflow', ['Domain CAD, simulation or data tools', 'Version control and reproducible calculations', 'Standards, requirements and traceability', 'Communication across disciplines']], ['Integration', ['Interface definition and integration planning', 'Prototype, test and fault isolation', 'Reliability, maintainability and risk', 'Cost, supply chain and operational context']], ['Optimization', ['Performance tuning and sensitivity analysis', 'Automation, digital models or lifecycle data', 'Resilience and failure mode analysis', 'Responsible deployment and continual improvement']], ['Projects & Career', ['Deliver an integrated cross-discipline project', 'Show models, test evidence and design decisions', 'Present trade-offs to a mixed audience', 'Prepare portfolio and role-specific interviews']]]
+            };
+            function family(c) { if (/Civil|Architecture/.test(c)) return 'civil'; if (/Electrical/.test(c)) return 'electrical'; if (/Electronics|Instrumentation/.test(c)) return 'electronics'; if (/Mechanical|Automobile/.test(c)) return 'mechanical'; if (/Chemical|Petroleum|Mining|Materials/.test(c)) return 'chemical'; if (/Aerospace/.test(c)) return 'aero'; if (/Biomedical|Biotechnology/.test(c)) return 'bio'; if (/Cybersecurity|Networks/.test(c)) return 'security'; if (/AI & Data/.test(c)) return 'data'; if (/Placement|Exams/.test(c)) return 'exam'; if (/Interdisciplinary/.test(c)) return 'inter'; return 'software' }
+            const slug = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); const roads = []; const idset = new Set();
+            function toolsFor(f) { let x = { software: ['VS Code', 'Git and GitHub', 'Linux terminal', 'Browser / runtime tools', 'Test runner'], civil: ['AutoCAD', 'Revit / BIM', 'Calculation spreadsheet', 'QGIS', 'Analysis software'], electrical: ['MATLAB / Simulink', 'Circuit simulator', 'Electrical CAD', 'PLC environment', 'Test instruments'], electronics: ['IDE and debugger', 'Circuit simulator', 'Oscilloscope / logic analyzer', 'PCB CAD', 'HDL simulator'], mechanical: ['CAD system', 'Calculation notebook', 'FEA / CFD tool', 'Measurement tools', 'CAM workflow'], chemical: ['Process simulator', 'Calculation spreadsheet', 'P&ID viewer', 'Data analysis tools', 'Safety worksheets'], aero: ['CAD tools', 'Numerical analysis', 'CFD / FEA', 'Requirements tracker', 'Test instruments'], bio: ['Python or MATLAB', 'Analysis notebooks', 'Lab instruments', 'Statistical tools', 'Quality records'], security: ['Linux virtual lab', 'Packet analyzer', 'Source control', 'Authorized lab range', 'Log search sandbox'], data: ['Python and notebooks', 'SQL database', 'Git', 'Visualization platform', 'Experiment tracking'], exam: ['Syllabus tracker', 'Past papers', 'Timed mock environment', 'Error log', 'Formula notes'], inter: ['CAD / modeling tools', 'Python or spreadsheet', 'Simulation software', 'Requirements tracker', 'Test instruments'] }[f]; return x.map((name, i) => ({ name, group: i < 2 ? 'Essential' : i < 4 ? 'Recommended' : 'Advanced' })) }
+            function makeProjects(title, f) { let x = { software: ['Responsive personal portfolio', 'API-backed task tracker', 'Tested capstone application'], civil: ['Site survey and drawing set', 'Quantity takeoff with checks', 'Coordinated model and construction case'], electrical: ['Low-voltage circuit simulation', 'Motor or renewable sizing study', 'Protection and automation design'], electronics: ['Sensor microcontroller prototype', 'PCB design and bring-up tests', 'Verified FPGA or embedded capstone'], mechanical: ['Parametric component drawing', 'Assembly with motion or thermal analysis', 'Validated design with FEA/CFD'], chemical: ['Material and energy balance workbook', 'Process flowsheet and equipment sizing', 'Safety-reviewed process design'], aero: ['Airfoil analysis notebook', 'Subsystem concept with structural checks', 'Vehicle simulation study'], bio: ['Signal or image analysis study', 'Tested instrumentation prototype', 'Reproducible biomedical design case'], security: ['Hardened local lab', 'Authorized assessment report', 'Defensive detection tabletop'], data: ['Explore and explain a dataset', 'Dashboard or evaluated model', 'Reproducible decision-support project'], exam: ['Diagnostic and error notebook', 'Timed practice analysis', 'Revision plan with mock review'], inter: ['Requirements map and prototype', 'Subsystem test and analysis', 'Cross-discipline design portfolio'] }[f]; return x.map((name, i) => ({ title: name.replace(/project|case/gi, title + ' practice'), difficulty: ['Beginner', 'Intermediate', 'Advanced'][i], description: `Apply ${title} concepts to a bounded, reviewable deliverable. State assumptions and verify the result.`, skills: [title, ['Foundations', 'Analysis', 'Design'][i]], deliverables: ['Scope and assumptions', 'Working artifact or calculation', 'Validation notes'] })) }
+            for (const [category, list] of catalog) for (const title of list.split('|')) { let id = slug(title); if (idset.has(id)) id += '-' + slug(category); idset.add(id); const f = family(category); let type = /GATE|Preparation|Aptitude|Reasoning|Verbal/.test(title) ? 'Exam Preparation' : /Developer|Engineer|Analyst|Manager|Architect/.test(title) ? 'Career' : /Fundamentals|Engineering$/.test(title) ? 'Core Engineering' : f === 'software' ? 'Software' : 'Skill'; let level = /Fundamentals|Basic/.test(title) ? 'Beginner' : /Advanced|Architect/.test(title) ? 'Advanced' : 'Intermediate'; let src = curricula[f], stages = src.map((s, i) => ({ id: `${id}-s${i + 1}`, title: s[0], description: `Build practical ${title} capability through ${s[0].toLowerCase()}.`, topics: s[1].map((name, j) => ({ id: `${id}-s${i + 1}-t${j + 1}`, title: name.replace('target domain', title.toLowerCase()), description: `Learn how ${name.toLowerCase()} applies to ${title}, when it is useful, and how to validate your work.`, importance: j === 3 ? 'recommended' : 'required', difficulty: i < 2 ? 'beginner' : i < 4 ? 'intermediate' : 'advanced', keyPoints: [`Core principles and terminology for ${title}`, 'Typical assumptions, constraints and failure modes', 'Ways to validate a result with evidence'], practice: [`Complete a focused ${title} exercise and record your reasoning`], tools: [] })) })); if (type === 'Career' || /Developer|Engineer|Analyst|Manager/.test(title)) for (const [n, topics] of [['Industry Practice', ['Requirements and stakeholder communication', 'Quality, safety and professional responsibility', 'Planning work and technical risk', 'Reviewing results and feedback']], ['Career Readiness', ['Portfolio case study and technical narrative', 'Interview concepts and scenario walkthroughs', 'Role-specific tools and workflow', 'Specialization and continuing study']]]) stages.push({ id: `${id}-s${stages.length + 1}`, title: n, description: `Apply ${title} capability in realistic team and delivery settings.`, topics: topics.map((x, i) => ({ id: `${id}-s${stages.length + 1}-t${i + 1}`, title: x, description: `Prepare to demonstrate ${title} competency through ${x.toLowerCase()}.`, importance: 'required', difficulty: 'advanced', keyPoints: ['Explain decisions, trade-offs and evidence', 'Connect fundamentals to practical outcomes'], practice: [`Prepare a ${title} portfolio artifact`], tools: [] })) }); const desc = `A structured path to learn ${title} from core principles through practical work, tools and next steps.`; const aliases = title.toLowerCase().replace(/[&/]/g, ' ').split(/\s+/).filter(w => w.length > 3); if (/Electrical Engineering/.test(title)) aliases.push('eee'); if (/Electronics Engineering/.test(title)) aliases.push('ece'); if (/Computer Science/.test(title)) aliases.push('cs'); if (title === 'Machine Learning') aliases.push('ml'); if (title === 'Artificial Intelligence Fundamentals') aliases.push('ai'); if (title === 'Data Structures & Algorithms') aliases.push('dsa'); roads.push({ id, title, category, type, level, description: desc, estimatedDuration: type === 'Career' ? '4–8 months' : '6–12 weeks', prerequisites: /Fundamentals/.test(title) ? ['Curiosity about the field', 'Comfort with basic mathematics and careful note-taking'] : f === 'software' ? ['Basic computer use', 'Willingness to practice small exercises'] : ['Basic mathematics and science', 'Interest in the engineering domain'], careerOutcomes: type === 'Career' ? [`${title} entry-level roles`, 'Related engineering and technology roles', 'Further specialization'] : ['Build a practical foundation', 'Apply skills in a related project'], stages, projects: makeProjects(title, f), tools: toolsFor(f), interviewTopics: ['Fundamentals and terminology', 'Core technical concepts', 'Scenario analysis and troubleshooting', 'Tools, standards and workflow', 'Project decisions and validation', 'Practical communication'], aliases }) }
+            const safe = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } }, S = { progress: safe('pathforge_progress', {}), book: safe('pathforge_bookmarks', { roads: [], topics: [] }), recent: safe('pathforge_recent', []), theme: safe('pathforge_theme', 'light'), plans: safe('pathforge_study_plans', {}), activity: safe('pathforge_activity', []), route: location.hash.slice(1) || 'home', cat: 'All', diff: 'All', type: 'All', sort: 'Recommended', tab: 'Roadmap', filter: 'all', q: '', collapsed: {}, compare: [], view: safe('pathforge_view', 'timeline') };
+            function save() { [['progress', S.progress], ['bookmarks', S.book], ['recent', S.recent], ['study_plans', S.plans], ['activity', S.activity]].forEach(([k, v]) => localStorage.setItem('pathforge_' + k, JSON.stringify(v))) } function esc(x) { return String(x).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) } const get = id => roads.find(r => r.id === id), done = r => S.progress[r.id] || [], required = r => r.stages.flatMap(s => s.topics).filter(t => t.importance === 'required'), percent = r => Math.round(done(r).filter(id => required(r).some(t => t.id === id)).length / required(r).length * 100) || 0, counts = r => [done(r).length, r.stages.flatMap(s => s.topics).length]; let timer; function toast(t) { let e = document.querySelector('#toast'); e.textContent = t; e.classList.remove('hidden'); clearTimeout(timer); timer = setTimeout(() => e.classList.add('hidden'), 2200) } function log(t) { S.activity.unshift({ text: t, time: Date.now() }); S.activity = S.activity.slice(0, 15); save() } function go(r) { S.route = r; location.hash = '#' + r; render(); scrollTo(0, 0) } window.onhashchange = () => { S.route = location.hash.slice(1) || 'home'; render() }; function fieldmatch(c, n) { return n === 'All' || c === n || n === 'Industrial & Production' && /Industrial|Production/.test(c) || n === 'Petroleum & Mining' && /Petroleum|Mining/.test(c) || n === 'Materials & Metallurgy' && /Materials/.test(c) }
+            function icon(name, size = 20) { return svgIcon(name, size) } function card(r) { let n = counts(r), b = S.book.roads.includes(r.id); return `<article class="card"><div class="top"><span class="ico">${svgIcon(getRoadmapIcon(r), 22)}</span><span class="pill level-${r.level.toLowerCase()}">${r.level}</span><button class="bookmark" data-br="${r.id}" aria-label="Bookmark ${esc(r.title)}">${svgIcon(b ? 'bookmarkFill' : 'bookmark', 18)}</button></div><h3>${esc(r.title)}</h3><p>${esc(r.description)}</p><div class="meta">${esc(r.category)} · ${r.stages.length} stages · ${r.estimatedDuration}</div>${n[0] ? `<div class="line"><i style="width:${percent(r)}%"></i></div><small>${percent(r)}% · ${n[0]}/${n[1]} topics</small>` : ''}<div class="actions"><button class="btn primary" data-open="${r.id}">View Roadmap</button><button class="link" data-compare="${r.id}">Compare</button></div></article>` }
+            function updateShell() { document.body.classList.toggle('dark', S.theme === 'dark'); document.querySelectorAll('[data-icon]').forEach(x => x.innerHTML = svgIcon(x.dataset.icon, 19)); let labels = { home: 'Home', roadmaps: 'Explore', progress: 'My Progress', bookmarks: 'Bookmarks', projects: 'Projects', compare: 'Compare', studyplans: 'Study Plans' }; document.querySelectorAll('[data-side]').forEach(b => { let k = b.dataset.side; b.innerHTML = svgIcon(({ home: 'home', roadmaps: 'explore', progress: 'progress', bookmarks: 'bookmark', projects: 'projects', compare: 'compare', studyplans: 'calendar' })[k], 18) + `<span>${labels[k]}</span>`; b.classList.toggle('active', S.route.split('/')[0] === k) }); let sideFields = document.querySelector('#sideFields'); if (sideFields && !sideFields.dataset.ready) { sideFields.innerHTML = fields.map(([n, k]) => `<button data-cat="${esc(n)}">${svgIcon(k, 17)}<span>${esc(n)}</span><small>${roads.filter(r => fieldmatch(r.category, n)).length}</small></button>`).join(''); sideFields.dataset.ready = '1' } document.querySelectorAll('[data-mtab]').forEach(b => b.classList.toggle('active', S.route.split('/')[0] === b.dataset.mtab)); document.querySelector('#savedDot')?.parentElement.classList.toggle('has-saved', S.book.roads.length + S.book.topics.length > 0); document.querySelector('#bookmarkCount span').textContent = S.book.roads.length + S.book.topics.length || ''; let name = S.route === 'home' ? 'Home' : S.route.startsWith('roadmap/') ? get(S.route.split('/')[1])?.title || 'Roadmap' : labels[S.route] || 'PathForge'; document.querySelector('#utilityCrumb').innerHTML = `PathForge <span>›</span> ${esc(name)}`; document.querySelector('#mobileTitle').textContent = name === 'Home' ? 'PathForge' : name; document.querySelector('#mobileBack').classList.toggle('hidden', !S.route.startsWith('roadmap/')); document.querySelector('#theme').innerHTML = svgIcon(S.theme === 'dark' ? 'sun' : 'moon', 18) + '<span>Theme</span>'; document.querySelector('#themeMini').innerHTML = svgIcon(S.theme === 'dark' ? 'sun' : 'moon', 19); let collapsed = safe('pathforge_sidebar_collapsed', false); document.querySelector('#workspaceSide').classList.toggle('collapsed', collapsed); document.querySelector('.workspace').classList.toggle('collapsed', collapsed); document.querySelector('#collapseSide').innerHTML = svgIcon(collapsed ? 'chevron' : 'back', 18); }
+            function studyPlansPage() { let entries = Object.entries(S.plans).map(([id, p]) => ({ r: get(id), p })).filter(x => x.r); return `<div class="shell page"><h1 class="title">Study Plans</h1><p class="desc">Your saved week-by-week plans.</p>${entries.length ? entries.map(({ r, p }) => `<section class="panel"><div class="sh"><div><h2>${esc(r.title)}</h2><p>${esc(p.duration)} plan</p></div><button class="btn" data-open="${r.id}" data-opentab="Study Plan">Open plan</button></div>${planHTML(r, p)}</section>`).join('') : '<div class="empty">No study plans yet. Open a roadmap and create a study plan.</div>'}</div>` }
+            function openPalette(mobile = false) { let root = document.querySelector('#overlay'); root.innerHTML = `<div class="palette-back ${mobile ? 'mobile-palette' : ''}" data-dismiss><section class="palette" role="dialog" aria-modal="true" aria-label="Search PathForge"><input id="paletteInput" placeholder="Search roadmaps, fields, topics…" autocomplete="off"><div class="palette-results" id="paletteResults"><p class="desc">Type to search the PathForge library.</p></div></section></div>`; let input = document.querySelector('#paletteInput'), results = document.querySelector('#paletteResults'), active = -1; document.body.style.overflow = 'hidden'; input.focus(); function draw() { let q = input.value.trim().toLowerCase(); if (!q) { results.innerHTML = '<p class="desc">Search by title, topic, field or alias.</p>'; return } let rr = roads.filter(r => [r.title, r.category, r.description, ...r.aliases].join(' ').toLowerCase().includes(q)).slice(0, 8), tt = []; for (let r of roads) { for (let st of r.stages) for (let t of st.topics) { if ((t.title + ' ' + t.description).toLowerCase().includes(q)) { tt.push({ r, t }); if (tt.length >= 6) break } if (tt.length >= 6) break } if (tt.length >= 6) break } results.innerHTML = `${rr.length ? '<small>ROADMAPS</small>' + rr.map(r => `<button data-popen="${r.id}">${svgIcon(getRoadmapIcon(r), 20)}<span><b>${esc(r.title)}</b><small>${esc(r.category)} · ${esc(r.description)}</small></span></button>`).join('') : ''}${tt.length ? '<small>TOPICS</small>' + tt.map(({ r, t }) => `<button data-ptopic="${r.id}|${t.id}">${svgIcon(getRoadmapIcon(r), 20)}<span><b>${esc(t.title)}</b><small>${esc(r.title)} · ${esc(r.category)}</small></span></button>`).join('') : ''}${!rr.length && !tt.length ? '<p class="desc">No matching roadmaps or topics.</p>' : ''}`; active = -1 } input.oninput = draw; input.onkeydown = e => { let list = [...results.querySelectorAll('button')]; if (e.key === 'ArrowDown') { e.preventDefault(); active = (active + 1) % list.length } else if (e.key === 'ArrowUp') { e.preventDefault(); active = (active - 1 + list.length) % list.length } else if (e.key === 'Enter' && list.length) { list[Math.max(0, active)].click() } else if (e.key === 'Escape') closeOverlay(); list.forEach((b, i) => b.classList.toggle('active', i === active)) }; results.onclick = e => { let b = e.target.closest('[data-popen],[data-ptopic]'); if (!b) return; let t = b.dataset.ptopic; closeOverlay(); if (t) { let [rid, tid] = t.split('|'); open(rid); setTimeout(() => showInfo(rid + '|' + tid), 80) } else open(b.dataset.popen) } } function render() { document.body.classList.toggle('dark', S.theme === 'dark'); let [kind, id] = S.route.split('/'), app = document.querySelector('#app'); app.innerHTML = kind === 'roadmap' ? roadpage(id) : kind === 'roadmaps' ? catalogPage() : kind === 'progress' ? progressPage() : kind === 'bookmarks' ? bookPage() : kind === 'projects' ? projectsPage() : kind === 'compare' ? comparePage() : kind === 'studyplans' ? studyPlansPage() : kind === 'home' ? homePage() : notfound(); updateShell(); wire() }
+            function homePage() { let started = roads.filter(r => done(r).length), recent = S.recent.map(get).filter(Boolean), recommend = ['computer-science-fundamentals', 'frontend-developer', 'data-structures-algorithms', 'ai-engineer', 'civil-engineering-fundamentals', 'electrical-engineering-fundamentals', 'electronics-engineering-fundamentals', 'mechanical-engineering-fundamentals', 'cybersecurity-fundamentals', 'power-systems', 'embedded-systems', 'vlsi'].map(get).filter(Boolean); return `<div class="shell"><section class="hero"><div class="eyebrow">Learn with direction</div><h1>Build Your Learning Path</h1><p>Step-by-step roadmaps for engineering, technology, software and career skills.</p><div class="search"><span class="glass">${svgIcon('search', 19)}</span><input id="heroQ" placeholder="What do you want to learn? Try Python, Civil, VLSI…" aria-label="Search roadmaps"><div class="suggest hidden" id="heroS"></div></div><div class="stats"><span><b>${roads.length}+</b> Roadmaps</span><span><b>${fields.length}</b> Engineering fields</span><span><b>Beginner → Advanced</b></span><span><b>Local</b> progress saved</span></div></section>${started.length ? `<section class="section"><div class="sh"><h2>Continue Learning</h2><button class="link" data-go="progress">View progress →</button></div><div class="continuegrid">${started.slice(0, 3).map(r => `<div class="continue"><h3>${esc(r.title)}</h3><small>${percent(r)}% · ${counts(r)[0]}/${counts(r)[1]} topics</small><div class="line"><i style="width:${percent(r)}%"></i></div><button class="btn" data-open="${r.id}">Continue</button></div>`).join('')}</div></section>` : ''}<section class="section"><div class="sh"><div><h2>Explore by Field</h2><p>Start with the area you’re curious about.</p></div><button class="link" data-go="roadmaps">All roadmaps →</button></div><div class="grid">${fields.map(([n, ic]) => `<button class="field" data-cat="${esc(n)}"><span class="field-icon">${svgIcon(ic, 24)}</span><strong>${esc(n)}</strong><small>${roads.filter(r => fieldmatch(r.category, n)).length} paths</small></button>`).join('')}</div></section><section class="section"><div class="sh"><div><h2>Recommended Roadmaps</h2><p>Starting points across engineering and technology.</p></div><button class="link" data-go="roadmaps">Browse all →</button></div><div class="recommended-shelf">${recommend.slice(0, 8).map(card).join('')}</div></section>${recent.length ? `<section class="section"><div class="sh"><h2>Recently Viewed</h2><button class="link" id="clearRecent">Clear History</button></div><div class="grid">${recent.map(card).join('')}</div></section>` : ''}${S.activity.length ? `<section class="section"><div class="sh"><h2>Activity</h2></div><div class="activity-list">${S.activity.slice(0, 8).map(x => `<div class="activity-row"><span class="activity-mark"></span><span>${esc(x.text)}</span><time>${new Date(x.time).toLocaleDateString()}</time></div>`).join('')}</div></section>` : ''}<section class="section"><div class="panel"><h2>I Don’t Know Where to Start</h2><p class="desc">Answer two quick questions to get sensible options.</p><button class="btn primary" id="exploreStart">Find my starting point</button></div></section><section class="section"><div class="sh"><h2>All Engineering Fields</h2></div><div class="chips">${fields.map(([n]) => `<button class="chip" data-cat="${esc(n)}">${esc(n)}</button>`).join('')}</div></section></div>` }
+            function filterRoads() { let q = (S.catalogQ || '').toLowerCase(); let x = roads.filter(r => fieldmatch(r.category, S.cat) && (S.diff === 'All' || S.diff === r.level) && (S.type === 'All' || S.type === r.type) && (!q || [r.title, r.category, r.description, ...r.aliases].join(' ').toLowerCase().includes(q))); if (S.sort === 'A–Z') x.sort((a, b) => a.title.localeCompare(b.title)); if (S.sort === 'Recently Viewed') x.sort((a, b) => (S.recent.indexOf(a.id) < 0 ? 999 : S.recent.indexOf(a.id)) - (S.recent.indexOf(b.id) < 0 ? 999 : S.recent.indexOf(b.id))); return x }
+            function catalogPage() { let x = filterRoads(); return `<div class="shell"><section class="page"><div class="eyebrow">Path library</div><h1 class="title">Explore Roadmaps</h1><p class="desc">Choose a field, role or skill and follow a structured learning path.</p><div class="filters"><div class="search"><span class="glass">${svgIcon('search', 19)}</span><input id="catalogQ" value="${esc(S.catalogQ || '')}" placeholder="Search roadmaps or aliases"></div><select id="diff"><option>All</option>${['Beginner', 'Intermediate', 'Advanced'].map(x => `<option ${S.diff === x ? 'selected' : ''}>${x}</option>`).join('')}</select><select id="rtype"><option>All</option>${['Career', 'Skill', 'Core Engineering', 'Software', 'Specialization', 'Exam Preparation'].map(x => `<option ${S.type === x ? 'selected' : ''}>${x}</option>`).join('')}</select><select id="sort"><option>Recommended</option><option ${S.sort === 'A–Z' ? 'selected' : ''}>A–Z</option><option ${S.sort === 'Recently Viewed' ? 'selected' : ''}>Recently Viewed</option></select></div><div class="chips"><button class="chip ${S.cat === 'All' ? 'active' : ''}" data-cat="All">All fields</button>${fields.map(([n]) => `<button class="chip ${S.cat === n ? 'active' : ''}" data-cat="${esc(n)}">${esc(n)}</button>`).join('')}</div><p class="desc" id="resultCount">${x.length} roadmaps</p><div class="results-list" id="catalogGrid">${x.length ? x.map(card).join('') : '<div class="empty" style="grid-column:1/-1">No roadmaps match your search.</div>'}</div></section></div>` }
+            function roadmapByTopic(key) { let [rid, tid] = key.split('|'), r = get(rid); return [r, r?.stages.flatMap(s => s.topics).find(t => t.id === tid)] }
+            function roadpage(id) { let r = get(id); if (!r) return notfound(); S.recent = [id, ...S.recent.filter(x => x !== id)].slice(0, 5); localStorage.setItem('pathforge_recent', JSON.stringify(S.recent)); let n = counts(r), body = S.tab === 'Roadmap' ? stagesHTML(r) : S.tab === 'Overview' ? overview(r) : S.tab === 'Projects' ? projects(r) : S.tab === 'Tools' ? toolHTML(r) : S.tab === 'Interview Prep' ? interview(r) : study(r); return `<div class="shell page"><div class="crumb"><button data-go="home">Home</button> / <button data-cat="${esc(r.category)}">${esc(r.category)}</button> / ${esc(r.title)}</div><div class="roadhead"><div><span class="pill">${r.type}</span> <span class="pill level-${r.level.toLowerCase()}">${r.level}</span><h1>${esc(r.title)}</h1><p>${esc(r.description)}</p></div><div class="actions right"><button class="btn" data-br="${id}">${S.book.roads.includes(id) ? svgIcon('bookmarkFill', 17) + ' Saved' : svgIcon('bookmark', 17) + ' Save'}</button><button class="btn" id="share">Share</button><button class="btn" onclick="window.print()">Print Roadmap</button><button class="btn primary" id="startRoad">${percent(r) > 0 ? 'Continue' : 'Start'}</button><button class="btn" data-tab="Study Plan">Study plan</button></div></div><div class="summary"><b>${percent(r)}% Complete</b><div class="line"><i style="width:${percent(r)}%"></i></div><span>${n[0]} / ${n[1]} topics completed</span><small>${r.stages.length} stages · ${r.estimatedDuration}</small></div><div class="tabs">${['Roadmap', 'Overview', 'Projects', 'Tools', 'Interview Prep', 'Study Plan'].map(x => `<button class="tab ${S.tab === x ? 'active' : ''}" data-tab="${x}">${x}</button>`).join('')}</div>${S.tab === 'Roadmap' ? `<div class="tools"><input id="roadQ" value="${esc(S.q)}" placeholder="Search in this roadmap"><select id="topicFilter"><option value="all">Show All</option><option value="required" ${S.filter === 'required' ? 'selected' : ''}>Required Only</option><option value="incomplete" ${S.filter === 'incomplete' ? 'selected' : ''}>Incomplete</option><option value="completed" ${S.filter === 'completed' ? 'selected' : ''}>Completed</option></select><button class="btn" id="view">${S.view === 'timeline' ? 'Checklist' : 'Timeline'} view</button><button class="btn" id="collapse">Collapse All</button><button class="btn" id="expand">Expand All</button></div>` : ''}<div class="layout"><aside class="stage-nav"><h3>STAGES</h3>${r.stages.map((st, i) => `<button data-stage-scroll="${st.id}"><span class="stage-small">${String(i + 1).padStart(2, "0")}</span>${esc(st.title)}</button>`).join("")}</aside><div id="roadBody" class="${S.view}-mode">${body}</div><aside class="side"><section class="panel"><h3>Roadmap progress</h3><b>${percent(r)}%</b><div class="line"><i style="width:${percent(r)}%"></i></div><p>${n[0]} topics checked. Optional topics don’t affect completion.</p><button class="link" id="resetRoad">Reset this roadmap</button></section><section class="panel"><h3>Legend</h3><p>Required · Recommended · Optional · Completed</p></section><section class="panel"><h3>Continue Learning</h3><div class="chips">${related(r).slice(0, 5).map(x => `<button class="chip" data-open="${x.id}">${esc(x.title)}</button>`).join('')}</div><button class="link" data-compare="${id}">Compare roadmaps</button></section></aside></div><section class="mobile-related"><h2>Related</h2><div class="recommended-shelf">${related(r).slice(0, 5).map(card).join("")}</div></section></div>` }
+            function stagesHTML(r) { let q = S.q.toLowerCase(), html = r.stages.map((s, i) => { let requiredTopics = s.topics.filter(t => t.importance === 'required'), stageComplete = requiredTopics.every(t => done(r).includes(t.id)); let ts = s.topics.filter(t => (S.filter === 'all' || S.filter === 'required' && t.importance === 'required' || S.filter === 'completed' && done(r).includes(t.id) || S.filter === 'incomplete' && !done(r).includes(t.id)) && (!q || [t.title, t.description, ...t.keyPoints].join(' ').toLowerCase().includes(q))); if (q && !ts.length) return ''; return `<section class="stage" id="${s.id}"><header class="stagehead"><span class="num">${String(i + 1).padStart(2, '0')}</span><div><b>${esc(s.title)}</b><small>${esc(s.description)}</small></div><span class="meter">${stageComplete ? 'Stage Completed ✓' : `${s.topics.filter(t => done(r).includes(t.id)).length}/${s.topics.length}`}</span><button data-collapse="${s.id}" aria-label="Collapse stage">${S.collapsed[s.id] ? '＋' : '−'}</button></header>${S.collapsed[s.id] ? '' : `<div class="topics">${ts.map(t => { let key = r.id + '|' + t.id; return `<div class="topic"><input type="checkbox" data-topic="${key}" ${done(r).includes(t.id) ? 'checked' : ''} aria-label="Mark ${esc(t.title)} complete"><div><b>${esc(t.title)}</b><small>${esc(t.description)}</small></div><aside><span class="pill">${t.importance}</span><button data-info="${key}" aria-label="More about ${esc(t.title)}">ⓘ</button><button data-bt="${key}" aria-label="Bookmark topic">${svgIcon(S.book.topics.includes(key) ? 'bookmarkFill' : 'bookmark', 16)}</button></aside></div>` }).join('')}</div>`}</section>` }).join(''); return html || '<div class="empty">No topics match this search or filter.</div>' }
+            function related(r) { let matches = x => x.id !== r.id && x.category === r.category; if (/Civil/.test(r.category)) matches = x => x.id !== r.id && (/Civil|Architecture/.test(x.category) || /Structural|Geotechnical|Construction|Transportation|BIM|Surveying/.test(x.title)); else if (/Electrical/.test(r.category)) matches = x => x.id !== r.id && (/Electrical|Electronics|Instrumentation/.test(x.category) || /Power|Control|Automation|Solar|EV/.test(x.title)); else if (/Mechanical/.test(r.category)) matches = x => x.id !== r.id && (/Mechanical|Automobile/.test(x.category) || /CAD|Manufacturing|Thermal|Mechatronics/.test(x.title)); else if (/Computer Science/.test(r.category)) matches = x => x.id !== r.id && (/Computer Science|AI & Data|Cybersecurity/.test(x.category) || /Developer|Programming|System Design/.test(x.title)); return roads.filter(matches).slice(0, 8) }
+            function overview(r) { return `<section class="panel"><h2>About This Roadmap</h2><p>${esc(r.description)} Stages advance from essential concepts to guided application, validation and next steps.</p><h3>Who Is This For?</h3><p>Learners exploring ${esc(r.title)}, students seeking an organized sequence and practitioners refreshing core skills.</p><h3>Prerequisites</h3><ul>${r.prerequisites.map(x => `<li>${esc(x)}</li>`).join('')}</ul><h3>What You Will Learn</h3><ul>${r.stages.map(s => `<li>${esc(s.title)} — ${esc(s.description)}</li>`).join('')}</ul><h3>Possible Career Paths</h3><ul>${r.careerOutcomes.map(x => `<li>${esc(x)}</li>`).join('')}</ul><h3>Recommended Learning Order</h3><p>Complete stages in sequence, practice required topics, then revisit recommended topics as projects or role requirements call for them. Follow applicable local standards and course requirements.</p></section>` }
+            function projects(r) { return r.projects.map(p => `<article class="project"><span class="pill">${p.difficulty}</span><h3>${esc(p.title)}</h3><p class="desc">${esc(p.description)}</p><b>Skills</b><ul>${p.skills.map(x => `<li>${esc(x)}</li>`).join('')}</ul><b>Deliverables</b><ul>${p.deliverables.map(x => `<li>${esc(x)}</li>`).join('')}</ul></article>`).join('') }
+            function toolHTML(r) { return `<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(165px,1fr))">${['Essential', 'Recommended', 'Advanced'].map(g => `<section class="panel"><h3>${g}</h3><ul>${r.tools.filter(t => t.group === g).map(t => `<li>${esc(t.name)}</li>`).join('') || '<li>Choose a domain-specific tool as you advance.</li>'}</ul></section>`).join('')}</div><p class="desc">Verify tool outputs against fundamentals, documentation and independent checks.</p>` }
+            function interview(r) { return ['Fundamentals', 'Core Technical Questions', 'Scenario Questions', 'Tools Questions', 'Project Questions', 'Practical Skills'].map((h, i) => `<section class="panel"><h3>${h}</h3><ul><li>Prepare to explain ${esc(r.interviewTopics[i].toLowerCase())} for ${esc(r.title)}.</li><li>Describe assumptions, trade-offs and how you would verify the result.</li></ul></section>`).join('') }
+            function study(r) { let p = S.plans[r.id]; return `<section class="panel"><h2>Create a Study Plan</h2><p class="desc">Divide the stages into approximate weekly goals. Adjust the pace to fit your schedule.</p><label>Duration <select id="duration">${['30 Days', '60 Days', '90 Days', '6 Months'].map(x => `<option ${p?.duration === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label> <button class="btn primary" id="makePlan">${p ? 'Update' : 'Generate'} plan</button>${p ? planHTML(r, p) : '<p class="desc">Choose a duration to generate weekly goals.</p>'}</section>` }
+            function planHTML(r, p) { let all = r.stages.flatMap((s, i) => s.topics.map(t => ({ ...t, stage: s.title }))), n = Math.ceil(all.length / p.weeks); return Array.from({ length: p.weeks }, (_, i) => { let part = all.slice(i * n, (i + 1) * n); return part.length ? `<div class="plan"><b>Week ${i + 1}</b><small> · ${esc(part[0].stage)}</small><ul>${part.map(t => `<li>${esc(t.title)}</li>`).join('')}</ul></div>` : '' }).join('') }
+            function progressPage() { let list = roads.filter(r => done(r).length); if (S.psort === 'az') list.sort((a, b) => a.title.localeCompare(b.title)); else if (S.psort === 'most') list.sort((a, b) => percent(b) - percent(a)); else if (S.psort === 'least') list.sort((a, b) => percent(a) - percent(b)); else list.sort((a, b) => S.recent.indexOf(a.id) - S.recent.indexOf(b.id)); let total = list.reduce((n, r) => n + done(r).filter(id => required(r).some(t => t.id === id)).length, 0), req = list.reduce((n, r) => n + required(r).length, 0); return `<div class="shell page"><h1 class="title">My Learning Progress</h1><p class="desc">Your learning is saved locally on this device.</p><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:20px 0"><div class="panel">Roadmaps Started<h2>${list.length}</h2></div><div class="panel">Roadmaps Completed<h2>${list.filter(r => percent(r) === 100).length}</h2></div><div class="panel">Topics Completed<h2>${total}</h2></div><div class="panel">Overall Completion<h2>${req ? Math.round(total / req * 100) : 0}%</h2></div></div><div class="sh"><h2>Started Roadmaps</h2><select id="psort"><option value="recent">Recently viewed</option><option value="most">Most progress</option><option value="least">Least progress</option><option value="az">A–Z</option></select></div>${list.length ? `<div class="grid">${list.map(card).join('')}</div>` : '<div class="empty">You haven’t started a roadmap yet.<br><button class="btn primary" data-go="roadmaps">Explore roadmaps</button></div>'}</div>` }
+            function bookPage() { let roadsSaved = S.book.roads.map(get).filter(Boolean), topics = S.book.topics.map(k => { let [r, t] = roadmapByTopic(k); return r && t ? { r, t, k } : null }).filter(Boolean); return `<div class="shell page"><h1 class="title">Bookmarks</h1><p class="desc">Keep paths and topics close at hand.</p><div class="tabs"><button class="tab ${S.btab !== 'topics' ? 'active' : ''}" data-btab="roads">Roadmaps</button><button class="tab ${S.btab === 'topics' ? 'active' : ''}" data-btab="topics">Topics</button></div>${S.btab === 'topics' ? (topics.length ? topics.map(({ r, t, k }) => `<article class="panel"><small>${esc(r.title)} · ${esc(r.category)}</small><h3>${esc(t.title)}</h3><p>${esc(t.description)}</p><button class="btn" data-open="${r.id}">Open roadmap</button> <button class="btn" data-bt="${k}">Remove</button></article>`).join('') : '<div class="empty">No topic bookmarks yet. Save a topic and it will appear here.</div>') : roadsSaved.length ? `<div class="grid">${roadsSaved.map(card).join('')}</div>` : '<div class="empty">No bookmarks yet. Save a roadmap or topic and it will appear here.</div>'}</div>` }
+            function projectsPage() { let rows = roads.flatMap(r => r.projects.map(p => ({ r, p }))); return `<div class="shell page"><h1 class="title">Project Library</h1><p class="desc">Practical work to turn learning into demonstrable evidence.</p><div class="filters"><select id="pcat"><option>All fields</option>${fields.map(f => `<option>${esc(f[0])}</option>`).join('')}</select><select id="plevel"><option>All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div class="grid" id="projectGrid">${rows.map(({ r, p }) => `<article class="panel project-item" data-cat="${esc(r.category)}" data-level="${p.difficulty}"><span class="pill">${p.difficulty}</span><h3>${esc(p.title)}</h3><p>${esc(r.title)} · ${esc(r.category)}</p><p class="desc">${esc(p.description)}</p><button class="link" data-open="${r.id}" data-opentab="Projects">Open related roadmap →</button></article>`).join('')}</div></div>` }
+            function comparePage() { let list = S.compare.map(get).filter(Boolean); return `<div class="shell page"><h1 class="title">Compare Roadmaps</h1><p class="desc">Compare focus, prerequisites, tools, projects and outcomes.</p><div class="filters"><select id="compareAdd"><option value="">Add a roadmap…</option>${roads.filter(r => !S.compare.includes(r.id)).map(r => `<option value="${r.id}">${esc(r.title)}</option>`).join('')}</select><button class="btn" id="compareClear">Clear</button></div>${list.length ? `<div class="tablewrap"><table><tr><th>Dimension</th>${list.map(r => `<th>${esc(r.title)} <button class="link" data-rcompare="${r.id}">×</button></th>`).join('')}</tr>${[['Focus', r => r.description], ['Prerequisites', r => r.prerequisites.join(', ')], ['Major skills', r => r.stages.slice(1, 5).map(s => s.title).join(', ')], ['Tools', r => r.tools.slice(0, 4).map(t => t.name).join(', ')], ['Project types', r => r.projects.map(p => p.difficulty + ': ' + p.title).join('; ')], ['Careers', r => r.careerOutcomes.join(', ')]].map(([x, f]) => `<tr><th>${x}</th>${list.map(r => `<td>${esc(f(r))}</td>`).join('')}</tr>`).join('')}</table></div>` : '<div class="empty">Use Compare on roadmap cards to select up to three paths.</div>'}</div>` } function notfound() { return `<div class="shell page"><div class="empty"><h2>Roadmap not found</h2><p>That path may have moved or the link is incomplete.</p><button class="btn primary" data-go="roadmaps">Explore Roadmaps</button></div></div>` }
+            function toggleRoad(id) { let had = S.book.roads.includes(id); S.book.roads = had ? S.book.roads.filter(x => x !== id) : [...S.book.roads, id]; save(); log(`${had ? 'Removed bookmark' : 'Bookmarked'} ${get(id)?.title || 'roadmap'}`); toast(had ? 'Bookmark removed' : 'Roadmap bookmarked'); render() } function toggleBookTopic(key) { S.book.topics = S.book.topics.includes(key) ? S.book.topics.filter(x => x !== key) : [...S.book.topics, key]; save(); toast('Topic bookmarks updated'); render() }
+            function toggleTopic(key, checked) { let [rid, tid] = key.split('|'), r = get(rid), t = r?.stages.flatMap(s => s.topics).find(x => x.id === tid); if (!r || !t) return; S.progress[rid] = checked ? [...new Set([...done(r), tid])] : done(r).filter(x => x !== tid); save(); log(`${checked ? 'Completed' : 'Reopened'} ${t.title} — ${r.title}`); toast(checked ? 'Topic completed' : 'Progress updated'); render() }
+            function showInfo(key) { let [r, t] = roadmapByTopic(key); if (!t) return; document.querySelector('#overlay').innerHTML = `<div class="overlay" data-dismiss><section class="drawer" role="dialog" aria-modal="true"><div class="drawerhead"><div><span class="pill">${t.importance} · ${t.difficulty}</span><h2>${esc(t.title)}</h2><small>${esc(r.title)}</small></div><button class="close" data-dismiss aria-label="Close">×</button></div><h3>What</h3><p>${esc(t.description)}</p><h3>Why</h3><p>This concept supports sound decisions and practical work in ${esc(r.title)}.</p><h3>Key concepts</h3><ul>${t.keyPoints.map(x => `<li>${esc(x)}</li>`).join('')}</ul><h3>Practice</h3><ul>${t.practice.map(x => `<li>${esc(x)}</li>`).join('')}</ul><div class="actions"><button class="btn primary" data-modalDone="${key}">${done(r).includes(t.id) ? 'Mark Incomplete' : 'Mark Complete'}</button><button class="btn" data-bt="${key}">Save topic</button></div></section></div>`; document.body.style.overflow = 'hidden' } function closeOverlay() { document.querySelector('#overlay').innerHTML = ''; document.body.style.overflow = '' }
+            function wireSearch(iid, sid) { let inp = document.getElementById(iid), box = document.getElementById(sid); if (!inp || !box) return; function update() { let q = inp.value.toLowerCase().trim(); if (!q) { box.classList.add('hidden'); return } let found = roads.filter(r => [r.title, r.category, r.description, ...r.aliases].join(' ').toLowerCase().includes(q)).slice(0, 8); box.innerHTML = found.length ? found.map(r => `<button data-open="${r.id}"><b>${esc(r.title)}</b><small>${esc(r.category)} · ${esc(r.description)}</small></button>`).join('') : '<button disabled>No matching roadmaps</button>'; box.classList.remove('hidden') } inp.addEventListener('input', update); inp.addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.add('hidden'); if (e.key === 'Enter') { let r = roads.find(r => (r.title + ' ' + r.category + ' ' + r.aliases.join(' ')).toLowerCase().includes(inp.value.toLowerCase())); if (r) open(r.id) } }) }
+            function open(id) { let r = get(id); if (!r) return; S.tab = 'Roadmap'; S.q = ''; go('roadmap/' + id); log('Opened ' + r.title) }
+            function wire() {
+                wireSearch('globalQ', 'globalS'); wireSearch('heroQ', 'heroS'); document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go)); document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => { if (b.dataset.opentab) S.tab = b.dataset.opentab; open(b.dataset.open) }); document.querySelectorAll('[data-cat]').forEach(b => b.onclick = () => { S.cat = b.dataset.cat; S.catalogQ = ''; go('roadmaps') }); document.querySelectorAll('[data-br]').forEach(b => b.onclick = () => toggleRoad(b.dataset.br)); document.querySelectorAll('[data-bt]').forEach(b => b.onclick = e => { e.stopPropagation(); toggleBookTopic(b.dataset.bt) }); document.querySelectorAll('[data-topic]').forEach(b => b.onchange = () => toggleTopic(b.dataset.topic, b.checked)); document.querySelectorAll('[data-info]').forEach(b => b.onclick = () => showInfo(b.dataset.info)); document.querySelectorAll('[data-modalDone]').forEach(b => b.onclick = () => { let [r, t] = roadmapByTopic(b.dataset.modaldone); toggleTopic(b.dataset.modaldone, !done(r).includes(t.id)); closeOverlay() }); document.querySelectorAll('[data-collapse]').forEach(b => b.onclick = () => { S.collapsed[b.dataset.collapse] = !S.collapsed[b.dataset.collapse]; render() }); document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { S.tab = b.dataset.tab; render() }); document.querySelectorAll('[data-compare]').forEach(b => b.onclick = () => { if (!S.compare.includes(b.dataset.compare)) { if (S.compare.length === 3) S.compare.shift(); S.compare.push(b.dataset.compare) } go('compare') }); document.querySelectorAll('[data-rcompare]').forEach(b => b.onclick = () => { S.compare = S.compare.filter(x => x !== b.dataset.rcompare); render() }); document.querySelectorAll('[data-btab]').forEach(b => b.onclick = () => { S.btab = b.dataset.btab; render() });
+                let cq = document.querySelector('#catalogQ'); cq?.addEventListener('input', () => { S.catalogQ = cq.value; let x = filterRoads(); document.querySelector('#catalogGrid').innerHTML = x.length ? x.map(card).join('') : '<div class="empty">No roadmaps match your search.</div>'; document.querySelector('#resultCount').textContent = x.length + ' roadmaps'; wireCards(document.querySelector('#catalogGrid')) });[['diff', 'diff'], ['rtype', 'type'], ['sort', 'sort']].forEach(([id, k]) => document.querySelector('#' + id)?.addEventListener('change', e => { S[k] = e.target.value; render() })); document.querySelector('#roadQ')?.addEventListener('input', e => { S.q = e.target.value; document.querySelector('#roadBody').innerHTML = stagesHTML(get(S.route.split('/')[1])); wireRoadContent(document.querySelector('#roadBody')) }); document.querySelector('#topicFilter')?.addEventListener('change', e => { S.filter = e.target.value; render() }); document.querySelector('#view')?.addEventListener('click', () => { S.view = S.view === 'timeline' ? 'checklist' : 'timeline'; localStorage.setItem('pathforge_view', JSON.stringify(S.view)); render() }); document.querySelector('#collapse')?.addEventListener('click', () => { get(S.route.split('/')[1]).stages.forEach(s => S.collapsed[s.id] = true); render() }); document.querySelector('#expand')?.addEventListener('click', () => { get(S.route.split('/')[1]).stages.forEach(s => S.collapsed[s.id] = false); render() }); document.querySelector('#resetRoad')?.addEventListener('click', () => { delete S.progress[S.route.split('/')[1]]; save(); toast('Roadmap progress reset'); render() }); document.querySelector('#share')?.addEventListener('click', share); document.querySelector('#startRoad')?.addEventListener('click', () => { let r = get(S.route.split('/')[1]), next = r.stages.flatMap(st => st.topics).find(t => t.importance === 'required' && !done(r).includes(t.id)); if (next) { let el = [...document.querySelectorAll('[data-topic]')].find(x => x.dataset.topic === r.id + '|' + next.id); el?.scrollIntoView({ behavior: 'smooth', block: 'center' }); el?.focus() } else toast('Roadmap complete') }); document.querySelector('#startRoad')?.addEventListener('click', () => { let r = get(S.route.split('/')[1]), next = r.stages.flatMap(st => st.topics).find(t => t.importance === 'required' && !done(r).includes(t.id)); if (next) { let el = [...document.querySelectorAll('[data-topic]')].find(x => x.dataset.topic === r.id + '|' + next.id); el?.scrollIntoView({ behavior: 'smooth', block: 'center' }); el?.focus() } else toast('Roadmap complete') }); document.querySelector('#makePlan')?.addEventListener('click', () => { let d = document.querySelector('#duration').value, w = { '30 Days': 4, '60 Days': 8, '90 Days': 13, '6 Months': 26 }[d]; S.plans[S.route.split('/')[1]] = { duration: d, weeks: w }; save(); toast('Study plan saved'); render() }); document.querySelector('#psort')?.addEventListener('change', e => { S.psort = e.target.value; render() }); document.querySelector('#clearRecent')?.addEventListener('click', () => { S.recent = []; localStorage.setItem('pathforge_recent', '[]'); render() }); document.querySelector('#pcat')?.addEventListener('change', filterProjects); document.querySelector('#plevel')?.addEventListener('change', filterProjects); document.querySelector('#compareAdd')?.addEventListener('change', e => { if (e.target.value && S.compare.length < 3) S.compare.push(e.target.value); render() }); document.querySelector('#compareClear')?.addEventListener('click', () => { S.compare = []; render() }); document.querySelector('#exploreStart')?.addEventListener('click', explorer); document.querySelectorAll('[data-stage-scroll]').forEach(b => b.onclick = () => document.getElementById(b.dataset.stageScroll)?.scrollIntoView({ behavior: 'smooth', block: 'start' })); document.querySelectorAll('[data-info]').forEach(b => b.onclick = () => showInfo(b.dataset.info))
+            }
+            function wireCards(root) { root.querySelectorAll('[data-open]').forEach(b => b.onclick = () => open(b.dataset.open)); root.querySelectorAll('[data-br]').forEach(b => b.onclick = () => toggleRoad(b.dataset.br)); root.querySelectorAll('[data-compare]').forEach(b => b.onclick = () => { if (!S.compare.includes(b.dataset.compare)) { if (S.compare.length === 3) S.compare.shift(); S.compare.push(b.dataset.compare) } go('compare') }) }
+            function wireRoadContent(root) { root.querySelectorAll('[data-topic]').forEach(b => b.onchange = () => toggleTopic(b.dataset.topic, b.checked)); root.querySelectorAll('[data-info]').forEach(b => b.onclick = () => showInfo(b.dataset.info)); root.querySelectorAll('[data-bt]').forEach(b => b.onclick = () => toggleBookTopic(b.dataset.bt)); root.querySelectorAll('[data-collapse]').forEach(b => b.onclick = () => { S.collapsed[b.dataset.collapse] = !S.collapsed[b.dataset.collapse]; render() }) }
+            function openMore() { document.querySelector('#overlay').innerHTML = `<div class="palette-back" data-dismiss><section class="palette more-sheet" role="dialog" aria-modal="true"><div class="sheet-handle"></div><h2>More</h2><button data-go="projects">${svgIcon('projects', 20)} Projects</button><button data-go="compare">${svgIcon('compare', 20)} Compare roadmaps</button><button data-go="studyplans">${svgIcon('calendar', 20)} Study plans</button><button id="moreFind">${svgIcon('target', 20)} Find my path</button><button id="moreTheme">${svgIcon(S.theme === 'dark' ? 'sun' : 'moon', 20)} Switch to ${S.theme === 'dark' ? 'light' : 'dark'} theme</button><button id="moreReset">${svgIcon('reset', 20)} Reset local data</button></section></div>`; document.querySelector('#moreFind').onclick = () => { closeOverlay(); explorer() }; document.querySelector('#moreTheme').onclick = () => { closeOverlay(); theme() }; document.querySelector('#moreReset').onclick = () => { closeOverlay(); resetAll() }; document.querySelectorAll('.more-sheet [data-go]').forEach(b => b.onclick = () => { let r = b.dataset.go; closeOverlay(); go(r) }) } function filterProjects() { let c = document.querySelector('#pcat').value, l = document.querySelector('#plevel').value; document.querySelectorAll('.project-item').forEach(x => x.classList.toggle('hidden', (c !== 'All fields' && x.dataset.cat !== c) || (l !== 'All levels' && x.dataset.level !== l))) } function share() { let u = location.href; if (navigator.clipboard?.writeText) navigator.clipboard.writeText(u).then(() => toast('Roadmap link copied')).catch(() => copy(u)); else copy(u) } function copy(t) { let x = document.createElement('textarea'); x.value = t; document.body.appendChild(x); x.select(); document.execCommand('copy'); x.remove(); toast('Roadmap link copied') }
+            function explorer() { let area = '', goal = ''; function show(step) { let choices = step === 'area' ? ['Software', 'AI/Data', 'Civil/Construction', 'Electrical/Power', 'Electronics', 'Machines/Manufacturing', 'Aerospace', 'Biology/Medical', 'Unsure'] : ['College Learning', 'Job Preparation', 'Skill Development', 'Career Switch', 'Competitive Exam']; document.querySelector('#overlay').innerHTML = `<div class="overlay" data-dismiss><section class="drawer" role="dialog" aria-modal="true"><div class="drawerhead"><div><span class="pill">STEP ${step === 'area' ? '1' : '2'} OF 2</span><h2>${step === 'area' ? 'Which area interests you?' : 'What is your goal?'}</h2><p class="desc">Choose the closest match. You can change it later.</p></div><button class="close" data-dismiss aria-label="Close">×</button></div><div class="explore-options">${choices.map(x => `<button class="btn" data-choice="${esc(x)}">${esc(x)} ${svgIcon('chevron', 16)}</button>`).join('')}</div>${step === 'goal' ? '<button class="link" id="exploreBack">← Change area</button>' : ''}</section></div>`; document.querySelectorAll('[data-choice]').forEach(b => b.onclick = () => { if (step === 'area') { area = b.dataset.choice; show('goal') } else { goal = b.dataset.choice; showResults() } }); document.querySelector('#exploreBack')?.addEventListener('click', () => show('area')) } function showResults() { let picks = area === 'Software' ? ['Computer Science Fundamentals', 'Frontend Developer', 'Data Structures & Algorithms', 'Backend Developer'] : area === 'AI/Data' ? ['Python for Data Analysis', 'Data Analyst', 'Machine Learning', 'Artificial Intelligence Fundamentals'] : area === 'Civil/Construction' ? ['Civil Engineering Fundamentals', 'Structural Engineering', 'Construction Project Management', 'BIM'] : area === 'Electrical/Power' ? ['Electrical Engineering Fundamentals', 'Power Systems', 'Renewable Energy', 'Control Systems'] : area === 'Electronics' ? ['Electronics Engineering Fundamentals', 'Embedded Systems', 'VLSI', 'Digital Electronics'] : area === 'Machines/Manufacturing' ? ['Mechanical Engineering Fundamentals', 'Machine Design', 'Manufacturing Engineering', 'CAD'] : area === 'Aerospace' ? ['Aerospace Engineering Fundamentals', 'Aerodynamics', 'Aircraft Design'] : area === 'Biology/Medical' ? ['Biomedical Engineering', 'Medical Instrumentation', 'Bioinformatics'] : ['Computer Science Fundamentals', 'Civil Engineering Fundamentals', 'Electrical Engineering Fundamentals', 'Mechanical Engineering Fundamentals']; if (goal === 'Competitive Exam') picks = ['GATE CSE', 'Engineering Mathematics', 'Engineering Aptitude']; let rec = picks.map(t => roads.find(r => r.title === t)).filter(Boolean); document.querySelector('#overlay').innerHTML = `<div class="overlay" data-dismiss><section class="drawer" role="dialog" aria-modal="true"><div class="drawerhead"><div><h2>Your suggested starting points</h2><p class="desc">${esc(area)} · ${esc(goal)}</p></div><button class="close" data-dismiss aria-label="Close">×</button></div><div class="grid">${rec.map(card).join('')}</div></section></div>`; wireCards(document.querySelector('#overlay')) } show('area') } function resetAll() { if (confirm('Reset all PathForge progress, bookmarks, history, plans and activity on this device?')) { ['pathforge_progress', 'pathforge_bookmarks', 'pathforge_recent', 'pathforge_study_plans', 'pathforge_activity'].forEach(k => localStorage.removeItem(k)); S.progress = {}; S.book = { roads: [], topics: [] }; S.recent = []; S.plans = {}; S.activity = []; toast('Progress reset'); render() } } function theme() { S.theme = S.theme === 'dark' ? 'light' : 'dark'; localStorage.setItem('pathforge_theme', JSON.stringify(S.theme)); render() }
+            document.querySelector('#theme').onclick = theme; document.querySelector('#themeMini').onclick = theme; document.querySelector('#commandTrigger').onclick = () => openPalette(false); document.querySelector('#mobileSearch').onclick = () => openPalette(true); document.querySelector('#moreButton').onclick = openMore; document.querySelector('#findPath').onclick = explorer; document.querySelector('#settings').onclick = () => document.querySelector('#settingsPop').classList.toggle('hidden'); document.querySelector('#settingsReset').onclick = resetAll; document.querySelector('#sideReset').onclick = resetAll; document.querySelector('#footerReset').onclick = resetAll; document.querySelector('#collapseSide').onclick = () => { localStorage.setItem('pathforge_sidebar_collapsed', JSON.stringify(!safe('pathforge_sidebar_collapsed', false))); updateShell() }; document.querySelector('#fieldsToggle').onclick = () => document.querySelector('#sideFields').classList.toggle('hidden'); document.querySelector('#mobileBack').onclick = () => go('home'); document.querySelector('#bookmarkCount').onclick = () => go('bookmarks'); document.querySelector('#overlay').addEventListener('click', e => { if (e.target.matches('[data-dismiss]')) closeOverlay() }); document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); if (e.key === '/' || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) { if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName) && e.key === '/') return; e.preventDefault(); openPalette(false) } }); document.addEventListener('click', e => { if (!e.target.closest('#settings') && !e.target.closest('#settingsPop')) document.querySelector('#settingsPop').classList.add('hidden') }); window.matchMedia('(max-width: 1023px)').addEventListener?.('change', () => updateShell());
+            render();
+        </script>
+</body>
+
+</html>
